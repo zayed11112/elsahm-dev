@@ -2,12 +2,12 @@
   "name": "تطبيق السهم للتسكين الطلابي",
   "short_name": "السهم للتسكين",
   "description": "منصة متكاملة للإسكان الطلابي تجعل البحث عن السكن سهلاً وآمناً وفعالاً",
-  "start_url": "/elsahm-dev/",
+  "start_url": "/",
   "display": "standalone",
   "background_color": "#ffffff",
   "theme_color": "#3B82F6",
   "orientation": "portrait-primary",
-  "scope": "/elsahm-dev/",
+  "scope": "/",
   "lang": "ar",
   "dir": "rtl",
   "categories": ["lifestyle", "education", "utilities"],
@@ -44,7 +44,7 @@
       "name": "البحث عن سكن",
       "short_name": "بحث",
       "description": "ابحث عن سكن طلابي مناسب",
-      "url": "/elsahm-dev/#features",
+      "url": "/#features",
       "icons": [
         {
           "src": "https://i.ibb.co/rK72d17L/app-1.png",
@@ -56,7 +56,7 @@
       "name": "تحميل التطبيق",
       "short_name": "تحميل",
       "description": "حمّل تطبيق السهم مجاناً",
-      "url": "/elsahm-dev/#download",
+      "url": "/#download",
       "icons": [
         {
           "src": "https://i.ibb.co/rK72d17L/app-1.png",
@@ -68,7 +68,7 @@
       "name": "تواصل معنا",
       "short_name": "تواصل",
       "description": "تواصل مع فريق الدعم",
-      "url": "/elsahm-dev/#contact",
+      "url": "/#contact",
       "icons": [
         {
           "src": "https://i.ibb.co/rK72d17L/app-1.png",
