@@ -115,7 +115,7 @@ const TestimonialsCarousel: React.FC<TestimonialsCarouselProps> = ({ testimonial
                 <div className="flex items-center justify-center gap-4">
                   <div className="w-16 h-16 rounded-full overflow-hidden shadow-lg border-2 border-white">
                     <img
-                      src="/su.webp"
+                      src="https://i.ibb.co/d09Xb0s/su.webp"
                       alt="صورة الطالب"
                       className="w-full h-full object-cover"
                     />
