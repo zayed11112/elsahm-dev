@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>اختبار تأثير الكتابة والمسح</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            margin: 0;
+            padding: 50px;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+        }
+
+        .typewriter-container {
+            position: relative;
+            display: inline-block;
+        }
+
+        .typewriter-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, transparent, rgba(251, 191, 36, 0.1), transparent);
+            border-radius: 4px;
+            opacity: 0;
+            animation: shimmer 3s ease-in-out infinite;
+        }
+
+        .typewriter-text {
+            display: inline-block;
+            position: relative;
+        }
+
+        .typewriter-glow {
+            text-shadow:
+                0 0 5px rgba(251, 191, 36, 0.5),
+                0 0 10px rgba(251, 191, 36, 0.3),
+                0 0 15px rgba(251, 191, 36, 0.2);
+            animation: textGlow 2s ease-in-out infinite alternate;
+            color: #fbbf24;
+            font-weight: bold;
+        }
+
+        .typewriter-cursor {
+            animation: blink 1s infinite;
+            color: #fbbf24;
+            font-weight: bold;
+            margin-left: 5px;
+        }
+
+        @keyframes blink {
+            0%, 50% { opacity: 1; }
+            51%, 100% { opacity: 0; }
+        }
+
+        @keyframes textGlow {
+            from {
+                text-shadow:
+                    0 0 5px rgba(251, 191, 36, 0.5),
+                    0 0 10px rgba(251, 191, 36, 0.3),
+                    0 0 15px rgba(251, 191, 36, 0.2);
+            }
+            to {
+                text-shadow:
+                    0 0 10px rgba(251, 191, 36, 0.8),
+                    0 0 20px rgba(251, 191, 36, 0.6),
+                    0 0 30px rgba(251, 191, 36, 0.4);
+            }
+        }
+
+        @keyframes shimmer {
+            0%, 100% { opacity: 0; transform: translateX(-100%); }
+            50% { opacity: 1; transform: translateX(100%); }
+        }
+
+        h1 {
+            font-size: 3rem;
+            text-align: center;
+            margin-bottom: 2rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+        }
+
+        .demo-text {
+            font-size: 1.2rem;
+            text-align: center;
+            margin-top: 2rem;
+            opacity: 0.8;
+        }
+    </style>
+</head>
+<body>
+    <h1>
+        تطبيق 
+        <span class="typewriter-container">
+            <span class="typewriter-text">
+                <span class="typewriter-glow" id="typewriter-text"></span>
+                <span class="typewriter-cursor">|</span>
+            </span>
+        </span>
+    </h1>
+    
+    <div class="demo-text">
+        تأثير الكتابة والمسح الاحترافي لكلمة "شركة السهم"
+    </div>
+
+    <script>
+        class TypewriterEffect {
+            constructor(element, text, options = {}) {
+                this.element = element;
+                this.text = text;
+                this.speed = options.speed || 150;
+                this.deleteSpeed = options.deleteSpeed || 100;
+                this.pauseDuration = options.pauseDuration || 3000;
+                this.loop = options.loop !== false;
+                
+                this.displayText = '';
+                this.isDeleting = false;
+                this.isPaused = false;
+                this.currentIndex = 0;
+                
+                this.start();
+            }
+            
+            start() {
+                this.typeWriter();
+            }
+            
+            typeWriter() {
+                if (this.isPaused) {
+                    setTimeout(() => {
+                        this.isPaused = false;
+                        this.isDeleting = true;
+                        this.typeWriter();
+                    }, this.pauseDuration);
+                    return;
+                }
+                
+                if (!this.isDeleting) {
+                    // Typing phase
+                    if (this.currentIndex < this.text.length) {
+                        this.displayText = this.text.slice(0, this.currentIndex + 1);
+                        this.currentIndex++;
+                        this.element.textContent = this.displayText;
+                        setTimeout(() => this.typeWriter(), this.speed);
+                    } else {
+                        // Finished typing, pause before deleting
+                        if (this.loop) {
+                            this.isPaused = true;
+                            this.typeWriter();
+                        }
+                    }
+                } else {
+                    // Deleting phase
+                    if (this.currentIndex > 0) {
+                        this.displayText = this.text.slice(0, this.currentIndex - 1);
+                        this.currentIndex--;
+                        this.element.textContent = this.displayText;
+                        setTimeout(() => this.typeWriter(), this.deleteSpeed);
+                    } else {
+                        // Finished deleting, start typing again
+                        this.isDeleting = false;
+                        setTimeout(() => this.typeWriter(), this.speed);
+                    }
+                }
+            }
+        }
+        
+        // Initialize the typewriter effect
+        document.addEventListener('DOMContentLoaded', function() {
+            const typewriterElement = document.getElementById('typewriter-text');
+            new TypewriterEffect(typewriterElement, 'شركة السهم', {
+                speed: 150,
+                deleteSpeed: 100,
+                pauseDuration: 3000,
+                loop: true
+            });
+        });
+    </script>
+</body>
+</html>
