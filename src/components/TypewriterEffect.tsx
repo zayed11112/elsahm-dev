@@ -72,7 +72,7 @@ const TypewriterEffect: React.FC<TypewriterEffectProps> = ({
     timeout = setTimeout(typeWriter, speed);
 
     return () => clearTimeout(timeout);
-  }, [currentIndex, isDeleting, isPaused, text, speed, deleteSpeed, pauseDuration, loop]);
+  }, [currentIndex, isDeleting, isPaused, text, speed, deleteSpeed, pauseDuration, loop, onType, onDelete]);
 
   return (
     <span className={`typewriter-container ${className}`}>
