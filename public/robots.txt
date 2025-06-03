@@ -40,8 +40,9 @@ Disallow: *.js$
 Disallow: /src/
 Disallow: /node_modules/
 
-# Sitemap location
+# Sitemap location (will be updated based on deployment)
+Sitemap: https://elsahm-ar.netlify.app/sitemap.xml
 Sitemap: https://zayed11112.github.io/elsahm-dev/sitemap.xml
 
-# Host (preferred domain)
-Host: https://zayed11112.github.io/elsahm-dev
+# Host (preferred domain - Netlify)
+Host: https://elsahm-ar.netlify.app

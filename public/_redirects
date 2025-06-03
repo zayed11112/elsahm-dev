@@ -1,0 +1,11 @@
+# Redirect all routes to index.html for SPA routing
+/*    /index.html   200
+
+# Optional: Redirect old URLs if needed
+# /old-path    /new-path    301
+
+# API redirects (if you have any external APIs)
+# /api/*    https://your-api-domain.com/api/:splat    200
+
+# Force HTTPS (optional - Netlify does this by default)
+# http://elsahm-ar.netlify.app/*    https://elsahm-ar.netlify.app/:splat    301!

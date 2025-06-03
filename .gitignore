@@ -105,3 +105,10 @@ temp/
 
 # GitHub Pages
 .gh-pages
+
+# Netlify
+.netlify
+.netlify.toml.backup
+
+# Local Netlify folder
+.netlify/
