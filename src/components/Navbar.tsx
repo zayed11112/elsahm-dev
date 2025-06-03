@@ -48,7 +48,7 @@ const Navbar: React.FC<NavbarProps> = ({ downloadUrl }) => {
             <div className="flex items-center gap-3">
               <div className="w-10 h-10 rounded-xl overflow-hidden shadow-lg border border-white/20">
                 <img
-                  src="/app_logo.png"
+                  src="https://i.ibb.co/rK72d17L/app-1.png"
                   alt="لوجو السهم"
                   className="w-full h-full object-cover"
                 />
@@ -157,7 +157,7 @@ const Navbar: React.FC<NavbarProps> = ({ downloadUrl }) => {
           className="fixed bottom-20 right-6 z-40 w-12 h-12 bg-white rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-110 flex items-center justify-center border border-gray-200"
         >
           <img
-            src="/app_logo.png"
+            src="https://i.ibb.co/rK72d17L/app-1.png"
             alt="العودة للأعلى"
             className="w-8 h-8 object-cover rounded-full"
           />

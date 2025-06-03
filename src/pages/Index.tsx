@@ -80,7 +80,7 @@ const Index = () => {
       "name": "شركة السهم للتسكين الطلابي",
       "logo": {
         "@type": "ImageObject",
-        "url": "https://i.ibb.co/rK72d17/app-1.png"
+        "url": "https://i.ibb.co/rK72d17L/app-1.png"
       }
     },
     "inLanguage": "ar",
@@ -113,7 +113,7 @@ const Index = () => {
         title="تطبيق السهم للتسكين الطلابي - منصة شاملة للإسكان الطلابي في مصر"
         description="منصة متكاملة للإسكان الطلابي تجعل البحث عن السكن سهلاً وآمناً وفعالاً. بحث متقدم، حجز إلكتروني، دفع آمن، ومجتمع طلابي متفاعل. حمّل التطبيق مجاناً الآن!"
         keywords="تسكين طلابي, سكن طلاب, إسكان جامعي, تطبيق السهم, سكن طلابي مصر, حجز سكن طلابي, شقق طلابية, غرف مشتركة, استوديوهات طلابية, سكن جامعة سيناء, تطبيق سكن, منصة إسكان"
-        image="https://i.ibb.co/rK72d17/app-1.png"
+        image="https://i.ibb.co/rK72d17L/app-1.png"
         url="https://zayed11112.github.io/elsahm-dev/"
         structuredData={structuredData}
       />
@@ -223,13 +223,16 @@ const Index = () => {
                     <div className="w-full h-full bg-black rounded-2xl overflow-hidden relative">
                       {/* Phone Image */}
                       <img
-                        src="https://i.ibb.co/mCdYb4r/phone-2.png"
+                        src="https://i.ibb.co/mCdYb4r2/phone-2.png"
                         alt="تطبيق السهم"
                         className="w-full h-full object-cover rounded-2xl"
                         onError={(e) => {
                           // Fallback if image doesn't load
                           e.currentTarget.style.display = 'none';
-                          e.currentTarget.nextElementSibling.style.display = 'flex';
+                          const nextElement = e.currentTarget.nextElementSibling as HTMLElement;
+                          if (nextElement) {
+                            nextElement.style.display = 'flex';
+                          }
                         }}
                       />
 

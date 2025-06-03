@@ -18,13 +18,13 @@
       "type": "image/x-icon"
     },
     {
-      "src": "/app_logo.png",
+      "src": "https://i.ibb.co/rK72d17L/app-1.png",
       "sizes": "192x192",
       "type": "image/png",
       "purpose": "any maskable"
     },
     {
-      "src": "/app_logo.png",
+      "src": "https://i.ibb.co/rK72d17L/app-1.png",
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "any maskable"
@@ -44,10 +44,10 @@
       "name": "البحث عن سكن",
       "short_name": "بحث",
       "description": "ابحث عن سكن طلابي مناسب",
-      "url": "/#features",
+      "url": "/elsahm-dev/#features",
       "icons": [
         {
-          "src": "/app_logo.png",
+          "src": "https://i.ibb.co/rK72d17L/app-1.png",
           "sizes": "96x96"
         }
       ]
@@ -56,10 +56,10 @@
       "name": "تحميل التطبيق",
       "short_name": "تحميل",
       "description": "حمّل تطبيق السهم مجاناً",
-      "url": "/#download",
+      "url": "/elsahm-dev/#download",
       "icons": [
         {
-          "src": "/app_logo.png",
+          "src": "https://i.ibb.co/rK72d17L/app-1.png",
           "sizes": "96x96"
         }
       ]
@@ -68,10 +68,10 @@
       "name": "تواصل معنا",
       "short_name": "تواصل",
       "description": "تواصل مع فريق الدعم",
-      "url": "/#contact",
+      "url": "/elsahm-dev/#contact",
       "icons": [
         {
-          "src": "/app_logo.png",
+          "src": "https://i.ibb.co/rK72d17L/app-1.png",
           "sizes": "96x96"
         }
       ]
