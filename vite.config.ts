@@ -5,8 +5,8 @@ import { componentTagger } from "lovable-tagger";
 
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => ({
-  // Base URL - use root for Netlify, subdirectory for GitHub Pages
-  base: mode === 'production' && process.env.GITHUB_PAGES ? '/elsahm-dev/' : '/',
+  // Base URL - always use root for Netlify
+  base: '/',
   server: {
     host: "::",
     port: 8080,
