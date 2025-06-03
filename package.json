@@ -17,7 +17,7 @@
   },
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
+    "build": "npx vite build",
     "build:dev": "vite build --mode development",
     "build:github": "GITHUB_PAGES=true vite build --mode production",
     "build:netlify": "vite build --mode production",
