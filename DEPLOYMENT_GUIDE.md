@@ -7,7 +7,7 @@
 ```bash
 # إنشاء repository جديد على GitHub
 # اسم الـ repository: elsahm-dev
-# URL: https://github.com/eslamz111/elsahm-dev.git
+# URL: https://github.com/zayed11112/elsahm-dev.git
 ```
 
 ### 2. رفع الكود إلى GitHub
@@ -23,7 +23,7 @@ git add .
 git commit -m "Initial commit: تطبيق السهم للتسكين الطلابي مع تحسينات SEO"
 
 # ربط المجلد المحلي بـ GitHub repository
-git remote add origin https://github.com/eslamz111/elsahm-dev.git
+git remote add origin https://github.com/zayed11112/elsahm-dev.git
 
 # رفع الكود إلى GitHub
 git branch -M main
@@ -41,7 +41,7 @@ git push -u origin main
 ### 4. التحقق من النشر
 
 - بعد انتهاء الـ workflow، سيكون الموقع متاح على:
-- https://eslamz111.github.io/elsahm-dev/
+- https://zayed11112.github.io/elsahm-dev/
 
 ### 5. أوامر مفيدة للتطوير
 
@@ -123,4 +123,4 @@ git push origin main
 ---
 
 **ملاحظة**: تأكد من أن جميع الروابط في الموقع تشير إلى:
-`https://eslamz111.github.io/elsahm-dev/`
+`https://zayed11112.github.io/elsahm-dev/`

@@ -62,7 +62,7 @@ const Index = () => {
     "name": "تطبيق السهم للتسكين الطلابي",
     "alternateName": "السهم للتسكين",
     "description": "منصة متكاملة للإسكان الطلابي تجعل البحث عن السكن سهلاً وآمناً وفعالاً",
-    "url": "https://eslamz111.github.io/elsahm-dev",
+    "url": "https://zayed11112.github.io/elsahm-dev",
     "applicationCategory": "LifestyleApplication",
     "operatingSystem": "Android",
     "offers": {
@@ -73,14 +73,14 @@ const Index = () => {
     "author": {
       "@type": "Organization",
       "name": "شركة السهم للتسكين الطلابي",
-      "url": "https://eslamz111.github.io/elsahm-dev"
+      "url": "https://zayed11112.github.io/elsahm-dev"
     },
     "publisher": {
       "@type": "Organization",
       "name": "شركة السهم للتسكين الطلابي",
       "logo": {
         "@type": "ImageObject",
-        "url": "https://eslamz111.github.io/elsahm-dev/app_logo.png"
+        "url": "https://zayed11112.github.io/elsahm-dev/app_logo.png"
       }
     },
     "inLanguage": "ar",
@@ -114,7 +114,7 @@ const Index = () => {
         description="منصة متكاملة للإسكان الطلابي تجعل البحث عن السكن سهلاً وآمناً وفعالاً. بحث متقدم، حجز إلكتروني، دفع آمن، ومجتمع طلابي متفاعل. حمّل التطبيق مجاناً الآن!"
         keywords="تسكين طلابي, سكن طلاب, إسكان جامعي, تطبيق السهم, سكن طلابي مصر, حجز سكن طلابي, شقق طلابية, غرف مشتركة, استوديوهات طلابية, سكن جامعة سيناء, تطبيق سكن, منصة إسكان"
         image="/app_logo.png"
-        url="https://eslamz111.github.io/elsahm-dev/"
+        url="https://zayed11112.github.io/elsahm-dev/"
         structuredData={structuredData}
       />
 
