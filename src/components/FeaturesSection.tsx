@@ -135,11 +135,11 @@ const FeaturesSection = () => {
             <AnimatedSection
               key={index}
               animation="fade-up"
-              delay={index * 150}
+              delay={index * 80}
             >
-              <Card className={`group relative overflow-hidden border border-gray-200/50 ${feature.bgColor} hover:bg-white shadow-lg hover:shadow-2xl transition-all duration-700 hover:scale-[1.02] h-full`}>
+              <Card className={`group relative overflow-hidden border border-gray-200/50 ${feature.bgColor} hover:bg-white shadow-lg hover:shadow-2xl transition-all duration-400 hover:scale-[1.02] h-full`}>
                 {/* Gradient Overlay */}
-                <div className={`absolute inset-0 bg-gradient-to-br ${feature.gradient} opacity-0 group-hover:opacity-5 transition-opacity duration-700`}></div>
+                <div className={`absolute inset-0 bg-gradient-to-br ${feature.gradient} opacity-0 group-hover:opacity-5 transition-opacity duration-400`}></div>
 
                 {/* Top Border Accent */}
                 <div className={`absolute top-0 left-0 right-0 h-1 bg-gradient-to-r ${feature.gradient}`}></div>
@@ -174,15 +174,15 @@ const FeaturesSection = () => {
                 </CardContent>
 
                 {/* Decorative Elements */}
-                <div className="absolute top-4 right-4 w-20 h-20 bg-gradient-to-br from-white/30 to-transparent rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
-                <div className="absolute bottom-4 left-4 w-16 h-16 bg-gradient-to-tr from-white/20 to-transparent rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
+                <div className="absolute top-4 right-4 w-20 h-20 bg-gradient-to-br from-white/30 to-transparent rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-400"></div>
+                <div className="absolute bottom-4 left-4 w-16 h-16 bg-gradient-to-tr from-white/20 to-transparent rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-400"></div>
               </Card>
             </AnimatedSection>
           ))}
         </div>
 
         {/* Enhanced Bottom Section */}
-        <AnimatedSection animation="fade-in" delay={900} className="text-center mt-20">
+        <AnimatedSection animation="fade-in" delay={450} className="text-center mt-20">
           <div className="bg-gradient-to-r from-blue-50 via-white to-purple-50 rounded-3xl p-8 border border-gray-200/50 shadow-lg">
             <div className="flex flex-col md:flex-row items-center justify-center gap-6">
               <div className="flex items-center gap-3">

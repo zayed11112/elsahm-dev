@@ -71,11 +71,11 @@ const StatsSection = () => {
             <AnimatedSection
               key={index}
               animation="fade-up"
-              delay={index * 150}
+              delay={index * 80}
             >
-              <Card className={`group relative overflow-hidden border-0 bg-gradient-to-br ${stat.bgGradient} shadow-xl hover:shadow-2xl transition-all duration-500 hover:scale-105 h-full`}>
+              <Card className={`group relative overflow-hidden border-0 bg-gradient-to-br ${stat.bgGradient} shadow-xl hover:shadow-2xl transition-all duration-400 hover:scale-105 h-full`}>
                 {/* Animated Background */}
-                <div className={`absolute inset-0 bg-gradient-to-br ${stat.gradient} opacity-0 group-hover:opacity-10 transition-opacity duration-500`}></div>
+                <div className={`absolute inset-0 bg-gradient-to-br ${stat.gradient} opacity-0 group-hover:opacity-10 transition-opacity duration-400`}></div>
                 
                 {/* Floating Orbs */}
                 <div className="absolute top-0 right-0 w-20 h-20 bg-white/20 rounded-full -translate-y-10 translate-x-10 group-hover:scale-150 transition-transform duration-700"></div>
@@ -94,7 +94,7 @@ const StatsSection = () => {
                     <AnimatedCounter
                       value={stat.number}
                       duration={2500}
-                      delay={index * 300}
+                      delay={index * 150}
                       gradient={stat.gradient}
                     />
                     

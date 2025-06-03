@@ -100,7 +100,7 @@ const TimelineSection = () => {
               <AnimatedSection
                 key={index}
                 animation={step.position === 'right' ? 'slide-right' : 'slide-left'}
-                delay={index * 200}
+                delay={index * 100}
               >
                 <div className={`flex flex-col lg:flex-row items-center gap-8 ${step.position === 'left' ? 'lg:flex-row-reverse' : ''}`}>
                   {/* Content */}
@@ -164,7 +164,7 @@ const TimelineSection = () => {
         </div>
 
         {/* Bottom CTA */}
-        <AnimatedSection animation="fade-in" delay={1200} className="text-center mt-20">
+        <AnimatedSection animation="fade-in" delay={600} className="text-center mt-20">
           <div className="inline-flex items-center gap-4 px-8 py-4 bg-white/10 backdrop-blur-sm rounded-2xl border border-white/20">
             <div className="w-3 h-3 bg-green-400 rounded-full animate-pulse"></div>
             <span className="text-white font-medium">ابدأ رحلتك اليوم</span>

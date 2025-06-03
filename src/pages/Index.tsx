@@ -157,9 +157,9 @@ const Index = () => {
                 <span className="text-white drop-shadow-2xl shadow-black/50 block" style={{textShadow: '2px 2px 4px rgba(0,0,0,0.8), 0 0 10px rgba(255,255,255,0.3)'}}>
                   تطبيق <TypewriterEffect
                     text="شركة السهم"
-                    speed={150}
-                    deleteSpeed={100}
-                    pauseDuration={3000}
+                    speed={100}
+                    deleteSpeed={60}
+                    pauseDuration={2000}
                     className="text-yellow-300 font-bold"
                     showCursor={true}
                     loop={true}
@@ -211,14 +211,14 @@ const Index = () => {
             </div>
             
             <div className="lg:w-1/2 flex justify-center mt-8 lg:mt-0">
-              <div className={`relative transition-all duration-1000 delay-300 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+              <div className={`relative transition-all duration-1000 delay-200 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
                 {/* Phone Container with Enhanced Design */}
                 <div className="relative">
                   {/* Glow Effect */}
                   <div className="absolute inset-0 bg-gradient-to-r from-blue-500 to-purple-500 rounded-3xl blur-2xl opacity-30 animate-pulse"></div>
 
                   {/* Phone Frame */}
-                  <div className="relative w-64 md:w-80 h-96 md:h-[500px] bg-gradient-to-b from-gray-800 to-gray-900 rounded-3xl p-2 shadow-2xl transform rotate-3 hover:rotate-0 transition-transform duration-500 float">
+                  <div className="relative w-64 md:w-80 h-96 md:h-[500px] bg-gradient-to-b from-gray-800 to-gray-900 rounded-3xl p-2 shadow-2xl transform rotate-3 hover:rotate-0 transition-transform duration-800 float">
                     {/* Screen */}
                     <div className="w-full h-full bg-black rounded-2xl overflow-hidden relative">
                       {/* Phone Image */}
@@ -327,10 +327,10 @@ const Index = () => {
                 bgGradient: "from-purple-50 to-violet-50"
               }
             ].map((item, index) => (
-              <AnimatedSection key={index} animation="fade-up" delay={index * 150}>
-                <Card className={`group relative overflow-hidden border-0 bg-gradient-to-br ${item.bgGradient} shadow-xl hover:shadow-2xl transition-all duration-500 hover:scale-105 h-full card-elevated`}>
+              <AnimatedSection key={index} animation="fade-up" delay={index * 80}>
+                <Card className={`group relative overflow-hidden border-0 bg-gradient-to-br ${item.bgGradient} shadow-xl hover:shadow-2xl transition-all duration-400 hover:scale-105 h-full card-elevated`}>
                   {/* Animated Background */}
-                  <div className={`absolute inset-0 bg-gradient-to-br ${item.gradient} opacity-0 group-hover:opacity-10 transition-opacity duration-500`}></div>
+                  <div className={`absolute inset-0 bg-gradient-to-br ${item.gradient} opacity-0 group-hover:opacity-10 transition-opacity duration-400`}></div>
 
                   {/* Floating Orbs */}
                   <div className="absolute top-0 right-0 w-20 h-20 bg-white/30 rounded-full -translate-y-10 translate-x-10 group-hover:scale-150 transition-transform duration-700"></div>
@@ -361,7 +361,7 @@ const Index = () => {
           </div>
 
           {/* Enhanced Bottom Decoration */}
-          <AnimatedSection animation="fade-in" delay={600} className="text-center mt-16">
+          <AnimatedSection animation="fade-in" delay={300} className="text-center mt-16">
             <div className="inline-flex flex-col md:flex-row items-center gap-4 px-8 py-4 glass rounded-2xl shadow-lg">
               <div className="flex items-center gap-2">
                 <div className="w-3 h-3 bg-green-500 rounded-full animate-pulse"></div>

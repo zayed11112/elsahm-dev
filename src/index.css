@@ -273,11 +273,11 @@
 
   /* Floating Animation */
   .float {
-    animation: float 6s ease-in-out infinite;
+    animation: float 8s ease-in-out infinite;
   }
 
   .float-delayed {
-    animation: float 6s ease-in-out infinite;
+    animation: float 8s ease-in-out infinite;
     animation-delay: -2s;
   }
 

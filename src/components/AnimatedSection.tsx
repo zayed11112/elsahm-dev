@@ -45,7 +45,7 @@ const AnimatedSection: React.FC<AnimatedSectionProps> = ({
     <div
       ref={elementRef}
       className={cn(
-        'transition-all duration-700 ease-out',
+        'transition-all duration-400 ease-out',
         isVisible ? animationClasses[animation].animate : animationClasses[animation].initial,
         className
       )}
