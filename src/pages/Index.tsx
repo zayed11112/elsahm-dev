@@ -15,7 +15,7 @@ import SEOHead from "@/components/SEOHead";
 import Navbar from "@/components/Navbar";
 
 const Index = () => {
-  const downloadUrl = "https://github.com/zayed11112/Elsahm/releases/download/dart/Elsahm_V1.apk";
+  const downloadUrl = "https://github.com/zayed11112/elsahm-dev/releases/download/v1.0.0/Elsahm-App-v1.0.0.apk";
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
