@@ -1,7 +1,7 @@
 import React from 'react';
 import { Card, CardContent } from "@/components/ui/card";
 import { Users, Home, Star, Shield } from "lucide-react";
-import AnimatedSection from './AnimatedSection';
+
 import AnimatedCounter from './AnimatedCounter';
 
 const StatsSection = () => {
@@ -56,7 +56,7 @@ const StatsSection = () => {
       </div>
 
       <div className="container mx-auto px-4 relative z-10">
-        <AnimatedSection className="text-center mb-16">
+        <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-gray-800" style={{textShadow: '1px 1px 2px rgba(0,0,0,0.1)'}}>
             أرقام تتحدث عن نفسها
           </h2>
@@ -64,15 +64,11 @@ const StatsSection = () => {
           <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
             نفخر بثقة آلاف الطلاب الذين اختاروا السهم كشريك موثوق في رحلة البحث عن السكن المثالي
           </p>
-        </AnimatedSection>
+        </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {stats.map((stat, index) => (
-            <AnimatedSection
-              key={index}
-              animation="fade-up"
-              delay={index * 80}
-            >
+            <div key={index}>
               <Card className={`group relative overflow-hidden border-0 bg-gradient-to-br ${stat.bgGradient} shadow-xl hover:shadow-2xl transition-all duration-400 hover:scale-105 h-full`}>
                 {/* Animated Background */}
                 <div className={`absolute inset-0 bg-gradient-to-br ${stat.gradient} opacity-0 group-hover:opacity-10 transition-opacity duration-400`}></div>
@@ -113,21 +109,11 @@ const StatsSection = () => {
                 {/* Glow Effect */}
                 <div className={`absolute inset-0 rounded-lg opacity-0 group-hover:opacity-20 transition-opacity duration-500 bg-gradient-to-r ${stat.gradient} blur-xl`}></div>
               </Card>
-            </AnimatedSection>
+            </div>
           ))}
         </div>
 
-        {/* Bottom CTA */}
-        <AnimatedSection animation="fade-in" delay={600} className="text-center mt-16">
-          <div className="inline-flex flex-col md:flex-row items-center gap-4 px-8 py-4 bg-white/60 backdrop-blur-sm rounded-2xl border border-white/40 shadow-lg">
-            <div className="flex items-center gap-2">
-              <div className="w-3 h-3 bg-green-500 rounded-full animate-pulse"></div>
-              <span className="text-gray-700 font-medium">نمو مستمر</span>
-            </div>
-            <div className="hidden md:block w-px h-6 bg-gray-300"></div>
-            <span className="text-gray-600 text-sm">ينضم إلينا +100 طالب يومياً</span>
-          </div>
-        </AnimatedSection>
+
       </div>
     </section>
   );

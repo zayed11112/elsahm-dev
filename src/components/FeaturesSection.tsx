@@ -2,7 +2,7 @@
 import React from 'react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Search, Image, Shield, User, MessageSquare, Book, CheckCircle } from "lucide-react";
-import AnimatedSection from './AnimatedSection';
+
 
 const FeaturesSection = () => {
   const features = [
@@ -107,7 +107,7 @@ const FeaturesSection = () => {
       </div>
 
       <div className="container mx-auto px-4 relative z-10">
-        <AnimatedSection className="text-center mb-20">
+        <div className="text-center mb-20">
           <div className="inline-flex items-center gap-2 px-4 py-2 bg-blue-100 text-blue-700 rounded-full text-sm font-medium mb-6">
             <CheckCircle className="w-4 h-4" />
             مميزات حصرية ومتطورة
@@ -128,15 +128,11 @@ const FeaturesSection = () => {
             <br />
             <span className="text-blue-600 font-semibold">سهلة وآمنة وممتعة</span>
           </p>
-        </AnimatedSection>
+        </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {features.map((feature, index) => (
-            <AnimatedSection
-              key={index}
-              animation="fade-up"
-              delay={index * 80}
-            >
+            <div key={index}>
               <Card className={`group relative overflow-hidden border border-gray-200/50 ${feature.bgColor} hover:bg-white shadow-lg hover:shadow-2xl transition-all duration-400 hover:scale-[1.02] h-full`}>
                 {/* Gradient Overlay */}
                 <div className={`absolute inset-0 bg-gradient-to-br ${feature.gradient} opacity-0 group-hover:opacity-5 transition-opacity duration-400`}></div>
@@ -177,35 +173,11 @@ const FeaturesSection = () => {
                 <div className="absolute top-4 right-4 w-20 h-20 bg-gradient-to-br from-white/30 to-transparent rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-400"></div>
                 <div className="absolute bottom-4 left-4 w-16 h-16 bg-gradient-to-tr from-white/20 to-transparent rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-400"></div>
               </Card>
-            </AnimatedSection>
+            </div>
           ))}
         </div>
 
-        {/* Enhanced Bottom Section */}
-        <AnimatedSection animation="fade-in" delay={450} className="text-center mt-20">
-          <div className="bg-gradient-to-r from-blue-50 via-white to-purple-50 rounded-3xl p-8 border border-gray-200/50 shadow-lg">
-            <div className="flex flex-col md:flex-row items-center justify-center gap-6">
-              <div className="flex items-center gap-3">
-                <div className="w-3 h-3 bg-green-500 rounded-full animate-pulse"></div>
-                <span className="text-gray-800 font-semibold">جميع المميزات متاحة مجاناً</span>
-              </div>
 
-              <div className="hidden md:block w-px h-8 bg-gray-300"></div>
-
-              <div className="flex items-center gap-3">
-                <CheckCircle className="w-5 h-5 text-blue-500" />
-                <span className="text-gray-600">تحديثات مستمرة</span>
-              </div>
-
-              <div className="hidden md:block w-px h-8 bg-gray-300"></div>
-
-              <div className="flex items-center gap-3">
-                <div className="w-3 h-3 bg-purple-500 rounded-full animate-pulse delay-75"></div>
-                <span className="text-gray-600">دعم فني 24/7</span>
-              </div>
-            </div>
-          </div>
-        </AnimatedSection>
       </div>
     </section>
   );

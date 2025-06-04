@@ -1,15 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { ChevronLeft, ChevronRight, Quote } from "lucide-react";
-import AnimatedSection from './AnimatedSection';
+import { ChevronLeft, ChevronRight, Quote, Star } from "lucide-react";
+
 
 interface Testimonial {
   name: string;
   text: string;
   university: string;
   rating: number;
-  avatar?: string;
 }
 
 interface TestimonialsCarouselProps {
@@ -23,24 +22,24 @@ const TestimonialsCarousel: React.FC<TestimonialsCarouselProps> = ({ testimonial
   // Auto-play functionality
   useEffect(() => {
     if (!isAutoPlaying) return;
-    
+
     const interval = setInterval(() => {
-      setCurrentIndex((prevIndex) => 
+      setCurrentIndex((prevIndex) =>
         prevIndex === testimonials.length - 1 ? 0 : prevIndex + 1
       );
-    }, 5000);
+    }, 6000);
 
     return () => clearInterval(interval);
   }, [testimonials.length, isAutoPlaying]);
 
   const goToNext = () => {
-    setCurrentIndex((prevIndex) => 
+    setCurrentIndex((prevIndex) =>
       prevIndex === testimonials.length - 1 ? 0 : prevIndex + 1
     );
   };
 
   const goToPrevious = () => {
-    setCurrentIndex((prevIndex) => 
+    setCurrentIndex((prevIndex) =>
       prevIndex === 0 ? testimonials.length - 1 : prevIndex - 1
     );
   };
@@ -51,136 +50,132 @@ const TestimonialsCarousel: React.FC<TestimonialsCarouselProps> = ({ testimonial
 
   const renderStars = (rating: number) => {
     return Array.from({ length: 5 }, (_, i) => (
-      <span 
-        key={i} 
-        className={`text-2xl ${i < rating ? 'text-yellow-400' : 'text-gray-300'} animate-pulse`}
-        style={{ animationDelay: `${i * 100}ms` }}
-      >
-        ⭐
-      </span>
+      <Star
+        key={i}
+        className={`w-5 h-5 transition-all duration-300 ${
+          i < rating
+            ? 'text-yellow-400 fill-yellow-400'
+            : 'text-gray-300'
+        }`}
+        style={{ animationDelay: `${i * 50}ms` }}
+      />
     ));
   };
 
   return (
-    <section className="py-20 bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50 relative overflow-hidden">
-      {/* Background Pattern */}
-      <div className="absolute inset-0 opacity-20">
-        <div className="absolute top-10 right-10 w-24 h-24 bg-blue-300 rounded-full mix-blend-multiply filter blur-xl animate-pulse"></div>
-        <div className="absolute bottom-10 left-10 w-32 h-32 bg-purple-300 rounded-full mix-blend-multiply filter blur-xl animate-pulse delay-75"></div>
-        <div className="absolute top-1/2 right-1/4 w-20 h-20 bg-pink-300 rounded-full mix-blend-multiply filter blur-xl animate-pulse delay-150"></div>
+    <section className="py-20 bg-gradient-to-br from-white via-blue-50/30 to-purple-50/30 relative overflow-hidden">
+      {/* Modern Background Elements */}
+      <div className="absolute inset-0 opacity-40">
+        <div className="absolute top-20 left-20 w-40 h-40 bg-gradient-to-br from-blue-400/20 to-purple-400/20 rounded-full blur-3xl animate-pulse"></div>
+        <div className="absolute bottom-20 right-20 w-56 h-56 bg-gradient-to-br from-purple-400/20 to-pink-400/20 rounded-full blur-3xl animate-pulse delay-75"></div>
+        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-32 h-32 bg-gradient-to-br from-cyan-400/20 to-blue-400/20 rounded-full blur-3xl animate-pulse delay-150"></div>
+      </div>
+
+      {/* Subtle Grid Pattern */}
+      <div className="absolute inset-0 opacity-5">
+        <div className="h-full w-full bg-[linear-gradient(to_right,#3b82f61a_1px,transparent_1px),linear-gradient(to_bottom,#3b82f61a_1px,transparent_1px)] bg-[size:40px_40px]"></div>
       </div>
 
       <div className="container mx-auto px-4 relative z-10">
-        <AnimatedSection className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-gray-800" style={{textShadow: '1px 1px 2px rgba(0,0,0,0.1)'}}>
+        <div className="text-center mb-20">
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-gray-800 bg-gradient-to-r from-gray-800 to-gray-600 bg-clip-text">
             آراء الطلاب
           </h2>
-          <div className="w-24 h-1 bg-gradient-to-r from-blue-500 to-purple-500 mx-auto mb-6 rounded-full"></div>
+          <div className="w-24 h-1 bg-gradient-to-r from-blue-500 to-purple-500 mx-auto mb-6 rounded-full shadow-lg"></div>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-            ماذا يقول الطلاب عن تجربتهم مع التطبيق وكيف ساعدهم في العثور على السكن المثالي
+            تجارب حقيقية من طلاب استخدموا التطبيق ووجدوا سكنهم المثالي
           </p>
-        </AnimatedSection>
+        </div>
 
         {/* Carousel Container */}
-        <div 
-          className="relative max-w-4xl mx-auto"
+        <div
+          className="relative max-w-5xl mx-auto"
           onMouseEnter={() => setIsAutoPlaying(false)}
           onMouseLeave={() => setIsAutoPlaying(true)}
         >
           {/* Main Testimonial Card */}
-          <AnimatedSection animation="fade-in">
-            <Card className="group relative overflow-hidden border-0 bg-white/80 backdrop-blur-sm shadow-2xl transition-all duration-500 min-h-[400px]">
-              {/* Gradient Border Effect */}
-              <div className="absolute inset-0 bg-gradient-to-br from-blue-500 via-purple-500 to-pink-500 opacity-20 blur-xl"></div>
-              
-              {/* Quote Icon */}
-              <div className="absolute top-6 right-6 text-blue-200 opacity-50">
-                <Quote className="w-16 h-16" />
+          <div>
+            <Card className="group relative overflow-hidden border-0 bg-white/90 backdrop-blur-md shadow-2xl hover:shadow-3xl transition-all duration-700 min-h-[350px] rounded-3xl">
+              {/* Modern Gradient Border */}
+              <div className="absolute inset-0 bg-gradient-to-br from-blue-500/10 via-purple-500/10 to-pink-500/10 rounded-3xl"></div>
+              <div className="absolute inset-[1px] bg-white/95 backdrop-blur-md rounded-3xl"></div>
+
+              {/* Floating Quote Icon */}
+              <div className="absolute top-8 right-8 text-blue-500/20 group-hover:text-blue-500/30 transition-colors duration-500">
+                <Quote className="w-12 h-12" />
               </div>
 
-              <CardContent className="relative z-10 p-12 text-center h-full flex flex-col justify-between">
-                <div>
-                  {/* Stars */}
-                  <div className="flex justify-center mb-8">
+              <CardContent className="relative z-10 p-8 md:p-12 text-center h-full flex flex-col justify-between">
+                <div className="space-y-8">
+                  {/* Stars Rating */}
+                  <div className="flex justify-center gap-1 mb-6">
                     {renderStars(testimonials[currentIndex]?.rating || 5)}
                   </div>
-                  
-                  {/* Quote */}
-                  <blockquote className="text-2xl md:text-3xl text-gray-700 leading-relaxed mb-8 font-medium">
+
+                  {/* Quote Text */}
+                  <blockquote className="text-xl md:text-2xl lg:text-3xl text-gray-700 leading-relaxed font-medium max-w-3xl mx-auto">
                     "{testimonials[currentIndex]?.text}"
                   </blockquote>
                 </div>
-                
-                {/* Author Info */}
-                <div className="flex items-center justify-center gap-4">
-                  <div className="w-16 h-16 rounded-full overflow-hidden shadow-lg border-2 border-white">
-                    <img
-                      src="https://i.ibb.co/d09Xb0s9/su.webp"
-                      alt="صورة الطالب"
-                      className="w-full h-full object-cover"
-                    />
-                  </div>
-                  <div className="text-right">
-                    <p className="font-bold text-xl text-gray-800">
+
+                {/* Author Info - Without Image */}
+                <div className="mt-8 pt-6 border-t border-gray-200/50">
+                  <div className="text-center space-y-2">
+                    <h4 className="font-bold text-xl md:text-2xl text-gray-800 bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
                       {testimonials[currentIndex]?.name}
-                    </p>
-                    <p className="text-gray-600">
+                    </h4>
+                    <p className="text-gray-600 text-lg">
                       {testimonials[currentIndex]?.university}
                     </p>
                   </div>
                 </div>
               </CardContent>
-            </Card>
-          </AnimatedSection>
 
-          {/* Navigation Buttons */}
+              {/* Subtle Glow Effect */}
+              <div className="absolute inset-0 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-700 bg-gradient-to-br from-blue-500/5 via-purple-500/5 to-pink-500/5"></div>
+            </Card>
+          </div>
+
+          {/* Modern Navigation Buttons */}
           <Button
             variant="outline"
             size="icon"
-            className="absolute left-4 top-1/2 transform -translate-y-1/2 w-12 h-12 rounded-full bg-white/80 backdrop-blur-sm border-white/40 hover:bg-white hover:scale-110 transition-all duration-300 shadow-lg"
+            className="absolute left-4 md:left-6 top-1/2 transform -translate-y-1/2 w-14 h-14 rounded-full bg-white/90 backdrop-blur-md border-gray-200/50 hover:bg-white hover:scale-110 hover:shadow-xl transition-all duration-300 shadow-lg group"
             onClick={goToPrevious}
           >
-            <ChevronRight className="w-6 h-6" />
+            <ChevronRight className="w-6 h-6 text-gray-600 group-hover:text-blue-600 transition-colors duration-300" />
           </Button>
-          
+
           <Button
             variant="outline"
             size="icon"
-            className="absolute right-4 top-1/2 transform -translate-y-1/2 w-12 h-12 rounded-full bg-white/80 backdrop-blur-sm border-white/40 hover:bg-white hover:scale-110 transition-all duration-300 shadow-lg"
+            className="absolute right-4 md:right-6 top-1/2 transform -translate-y-1/2 w-14 h-14 rounded-full bg-white/90 backdrop-blur-md border-gray-200/50 hover:bg-white hover:scale-110 hover:shadow-xl transition-all duration-300 shadow-lg group"
             onClick={goToNext}
           >
-            <ChevronLeft className="w-6 h-6" />
+            <ChevronLeft className="w-6 h-6 text-gray-600 group-hover:text-blue-600 transition-colors duration-300" />
           </Button>
 
-          {/* Dots Indicator */}
-          <div className="flex justify-center gap-3 mt-8">
+          {/* Modern Dots Indicator */}
+          <div className="flex justify-center gap-3 mt-12">
             {testimonials.map((_, index) => (
               <button
                 key={index}
-                className={`w-3 h-3 rounded-full transition-all duration-300 ${
-                  index === currentIndex 
-                    ? 'bg-blue-500 scale-125' 
-                    : 'bg-gray-300 hover:bg-gray-400'
+                className={`relative transition-all duration-300 ${
+                  index === currentIndex
+                    ? 'w-8 h-3 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full'
+                    : 'w-3 h-3 bg-gray-300 hover:bg-gray-400 rounded-full hover:scale-125'
                 }`}
                 onClick={() => goToSlide(index)}
-              />
+              >
+                {index === currentIndex && (
+                  <div className="absolute inset-0 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full animate-pulse"></div>
+                )}
+              </button>
             ))}
           </div>
         </div>
 
-        {/* Bottom Stats */}
-        <AnimatedSection animation="fade-in" delay={600} className="text-center mt-16">
-          <div className="inline-flex flex-col md:flex-row items-center gap-4 px-8 py-4 bg-white/60 backdrop-blur-sm rounded-2xl border border-white/40 shadow-lg">
-            <div className="flex items-center gap-2">
-              <div className="w-3 h-3 bg-yellow-500 rounded-full animate-pulse"></div>
-              <span className="text-gray-700 font-medium">تقييم 4.8/5</span>
-            </div>
-            <div className="hidden md:block w-px h-6 bg-gray-300"></div>
-            <span className="text-gray-600 text-sm">من أكثر من 1000 تقييم</span>
-            <div className="hidden md:block w-px h-6 bg-gray-300"></div>
-            <span className="text-gray-600 text-sm">معدل رضا 95%</span>
-          </div>
-        </AnimatedSection>
+
       </div>
     </section>
   );

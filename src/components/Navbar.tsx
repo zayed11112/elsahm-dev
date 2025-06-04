@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Button } from "@/components/ui/button";
-import { Download, Menu, X, Home, Star, Users, Phone, Info } from "lucide-react";
+import { Download, Menu, X, Home, Star, Users, Phone } from "lucide-react";
 
 interface NavbarProps {
   downloadUrl: string;
@@ -23,8 +23,7 @@ const Navbar: React.FC<NavbarProps> = ({ downloadUrl }) => {
     { name: "الرئيسية", href: "#home", icon: Home },
     { name: "المميزات", href: "#features", icon: Star },
     { name: "آراء الطلاب", href: "#testimonials", icon: Users },
-    { name: "تواصل معنا", href: "#contact", icon: Phone },
-    { name: "عن التطبيق", href: "#about", icon: Info }
+    { name: "تواصل معنا", href: "#contact", icon: Phone }
   ];
 
   const scrollToSection = (href: string) => {

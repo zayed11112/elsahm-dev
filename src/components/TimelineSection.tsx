@@ -1,7 +1,7 @@
 import React from 'react';
 import { Card, CardContent } from "@/components/ui/card";
 import { Search, CreditCard, Key, MessageSquare, Star, Users } from "lucide-react";
-import AnimatedSection from './AnimatedSection';
+
 
 const TimelineSection = () => {
   const steps = [
@@ -81,7 +81,7 @@ const TimelineSection = () => {
       </div>
 
       <div className="container mx-auto px-4 relative z-10">
-        <AnimatedSection className="text-center mb-16">
+        <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6">
             رحلتك مع السهم
           </h2>
@@ -89,7 +89,7 @@ const TimelineSection = () => {
           <p className="text-xl text-blue-100 max-w-3xl mx-auto leading-relaxed">
             من البحث إلى الاستقرار، نرافقك في كل خطوة للوصول إلى السكن المثالي
           </p>
-        </AnimatedSection>
+        </div>
 
         <div className="relative">
           {/* Timeline Line */}
@@ -97,11 +97,7 @@ const TimelineSection = () => {
 
           <div className="space-y-12 lg:space-y-24">
             {steps.map((step, index) => (
-              <AnimatedSection
-                key={index}
-                animation={step.position === 'right' ? 'slide-right' : 'slide-left'}
-                delay={index * 100}
-              >
+              <div key={index}>
                 <div className={`flex flex-col lg:flex-row items-center gap-8 ${step.position === 'left' ? 'lg:flex-row-reverse' : ''}`}>
                   {/* Content */}
                   <div className="flex-1 lg:w-1/2">
@@ -158,19 +154,19 @@ const TimelineSection = () => {
                   {/* Spacer */}
                   <div className="flex-1 lg:w-1/2"></div>
                 </div>
-              </AnimatedSection>
+              </div>
             ))}
           </div>
         </div>
 
         {/* Bottom CTA */}
-        <AnimatedSection animation="fade-in" delay={600} className="text-center mt-20">
+        <div className="text-center mt-20">
           <div className="inline-flex items-center gap-4 px-8 py-4 bg-white/10 backdrop-blur-sm rounded-2xl border border-white/20">
             <div className="w-3 h-3 bg-green-400 rounded-full animate-pulse"></div>
             <span className="text-white font-medium">ابدأ رحلتك اليوم</span>
             <div className="w-3 h-3 bg-blue-400 rounded-full animate-pulse delay-75"></div>
           </div>
-        </AnimatedSection>
+        </div>
       </div>
     </section>
   );

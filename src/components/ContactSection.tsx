@@ -2,7 +2,7 @@
 import React from 'react';
 import { Card, CardContent } from "@/components/ui/card";
 import { Phone, Mail, MapPin, Clock, Users, CheckCircle } from "lucide-react";
-import AnimatedSection from './AnimatedSection';
+
 
 // Custom WhatsApp Icon Component
 const WhatsAppIcon = ({ className }: { className?: string }) => (
@@ -69,7 +69,7 @@ const ContactSection = () => {
       </div>
 
       <div className="container mx-auto px-4 relative z-10">
-        <AnimatedSection className="text-center mb-20">
+        <div className="text-center mb-20">
           <div className="inline-flex items-center gap-2 px-4 py-2 bg-blue-100 text-blue-700 rounded-full text-sm font-medium mb-6">
             <Users className="w-4 h-4" />
             فريق دعم متخصص
@@ -90,15 +90,11 @@ const ContactSection = () => {
             <br />
             <span className="text-blue-600 font-semibold">فريق دعم محترف متاح على مدار الساعة</span>
           </p>
-        </AnimatedSection>
+        </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
           {contactMethods.map((method, index) => (
-            <AnimatedSection
-              key={index}
-              animation="fade-up"
-              delay={index * 200}
-            >
+            <div key={index}>
               <Card className={`group relative overflow-hidden border border-gray-200/50 ${method.bgColor} hover:bg-white shadow-lg hover:shadow-2xl transition-all duration-700 hover:scale-[1.02] h-full`}>
                 {/* Gradient Overlay */}
                 <div className={`absolute inset-0 bg-gradient-to-br ${method.gradient} opacity-0 group-hover:opacity-5 transition-opacity duration-700`}></div>
@@ -152,12 +148,12 @@ const ContactSection = () => {
                 <div className="absolute top-4 right-4 w-20 h-20 bg-gradient-to-br from-white/30 to-transparent rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
                 <div className="absolute bottom-4 left-4 w-16 h-16 bg-gradient-to-tr from-white/20 to-transparent rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
               </Card>
-            </AnimatedSection>
+            </div>
           ))}
         </div>
 
         {/* Enhanced Bottom Section */}
-        <AnimatedSection animation="fade-in" delay={800} className="text-center mt-20">
+        <div className="text-center mt-20">
           <div className="bg-gradient-to-r from-blue-50 via-white to-green-50 rounded-3xl p-8 border border-gray-200/50 shadow-lg">
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               <div className="flex flex-col items-center gap-3">
@@ -191,7 +187,7 @@ const ContactSection = () => {
               </div>
             </div>
           </div>
-        </AnimatedSection>
+        </div>
       </div>
     </section>
   );

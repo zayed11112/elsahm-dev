@@ -3,11 +3,11 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Download, ArrowDown, Smartphone } from "lucide-react";
 import { useEffect, useState } from "react";
-import AnimatedSection from "@/components/AnimatedSection";
+
 import FeaturesSection from "@/components/FeaturesSection";
 import ContactSection from "@/components/ContactSection";
 import StatsSection from "@/components/StatsSection";
-import TimelineSection from "@/components/TimelineSection";
+
 import TestimonialsCarousel from "@/components/TestimonialsCarousel";
 import TypewriterEffect from "@/components/TypewriterEffect";
 import SEOHead from "@/components/SEOHead";
@@ -25,31 +25,31 @@ const Index = () => {
   const testimonials = [
     {
       name: "أحمد حسن",
-      text: "تطبيق رائع! وجدت سكن مناسب بسهولة وبسعر مناسب قريب من جامعتي. الواجهة سهلة والدفع آمن.",
+      text: "والله التطبيق ده جامد جداً! لقيت شقة حلوة وقريبة من الكلية وبسعر كويس. سهل في الاستخدام والدفع مأمون.",
       university: "جامعة سيناء",
       rating: 5
     },
     {
       name: "فاطمة محمود",
-      text: "التطبيق سهل الاستخدام والدفع الإلكتروني آمن جداً. أنصح به كل الطلاب. خدمة العملاء ممتازة.",
+      text: "التطبيق سهل أوي والدفع الإلكتروني آمن جداً. بنصح بيه كل الطلبة. خدمة العملاء محترمة جداً.",
       university: "جامعة سيناء",
       rating: 5
     },
     {
       name: "عمر الشاذلي",
-      text: "المجتمع الطلابي في التطبيق مفيد جداً، تعرفت على أصدقاء جدد وحصلت على نصائح قيمة.",
+      text: "الجروبات الطلابية في التطبيق مفيدة جداً، اتعرفت على صحاب جداد وخدت نصايح حلوة أوي.",
       university: "جامعة سيناء",
       rating: 5
     },
     {
       name: "نور الدين محمد",
-      text: "البحث المتقدم ساعدني كثيراً في العثور على السكن المثالي. التطبيق يوفر الوقت والجهد.",
+      text: "البحث المتقدم ساعدني جداً ألاقي السكن اللي عايزه. التطبيق بيوفر وقت ومجهود كتير.",
       university: "جامعة سيناء",
       rating: 4
     },
     {
       name: "سارة أحمد",
-      text: "تجربة رائعة من البداية للنهاية. الصور واضحة والمعلومات دقيقة. حجزت شقتي في دقائق.",
+      text: "تجربة جميلة من الأول للآخر. الصور واضحة والمعلومات صحيحة. حجزت شقتي في دقايق معدودة.",
       university: "جامعة سيناء",
       rating: 5
     }
@@ -280,99 +280,7 @@ const Index = () => {
         {/* Features Section */}
         <FeaturesSection />
 
-        {/* Timeline Section */}
-        <TimelineSection />
 
-        {/* Enhanced Competitive Advantages */}
-        <section id="about" className="py-20 bg-gradient-to-br from-indigo-50 via-white to-purple-50 relative overflow-hidden" role="region" aria-labelledby="about-heading">
-        {/* Background Pattern */}
-        <div className="absolute inset-0 opacity-30">
-          <div className="absolute top-20 left-20 w-32 h-32 bg-blue-200 rounded-full mix-blend-multiply filter blur-xl animate-pulse"></div>
-          <div className="absolute bottom-20 right-20 w-40 h-40 bg-purple-200 rounded-full mix-blend-multiply filter blur-xl animate-pulse delay-75"></div>
-          <div className="absolute top-1/2 left-1/2 w-24 h-24 bg-pink-200 rounded-full mix-blend-multiply filter blur-xl animate-pulse delay-150"></div>
-        </div>
-
-        <div className="container mx-auto px-4 relative z-10">
-          <AnimatedSection className="text-center mb-16">
-            <h2 id="about-heading" className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-gray-800" style={{textShadow: '1px 1px 2px rgba(0,0,0,0.1)'}}>
-              لماذا تختار السهم؟
-            </h2>
-            <div className="w-24 h-1 bg-gradient-to-r from-blue-500 to-purple-500 mx-auto mb-6 rounded-full"></div>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-              نقدم حلولاً مبتكرة ومتطورة تجعل تجربة البحث عن السكن أسهل وأكثر أماناً
-            </p>
-          </AnimatedSection>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {[
-              {
-                emoji: "💰",
-                title: "أسعار مناسبة للطلاب",
-                description: "أسعار صديقة للطلاب مع التركيز على الخصوصية والأمان والجودة العالية",
-                gradient: "from-emerald-500 to-teal-500",
-                bgGradient: "from-emerald-50 to-teal-50"
-              },
-              {
-                emoji: "⚡",
-                title: "عملية مبسطة",
-                description: "اكتشاف وحجز ودفع مبسط للإسكان مع واجهة سهلة الاستخدام",
-                gradient: "from-blue-500 to-cyan-500",
-                bgGradient: "from-blue-50 to-cyan-50"
-              },
-              {
-                emoji: "🎯",
-                title: "جمهور مستهدف",
-                description: "مثالي لمقدمي الإسكان للوصول للطلاب المستهدفين بفعالية",
-                gradient: "from-purple-500 to-violet-500",
-                bgGradient: "from-purple-50 to-violet-50"
-              }
-            ].map((item, index) => (
-              <AnimatedSection key={index} animation="fade-up" delay={index * 80}>
-                <Card className={`group relative overflow-hidden border-0 bg-gradient-to-br ${item.bgGradient} shadow-xl hover:shadow-2xl transition-all duration-400 hover:scale-105 h-full card-elevated`}>
-                  {/* Animated Background */}
-                  <div className={`absolute inset-0 bg-gradient-to-br ${item.gradient} opacity-0 group-hover:opacity-10 transition-opacity duration-400`}></div>
-
-                  {/* Floating Orbs */}
-                  <div className="absolute top-0 right-0 w-20 h-20 bg-white/30 rounded-full -translate-y-10 translate-x-10 group-hover:scale-150 transition-transform duration-700"></div>
-                  <div className="absolute bottom-0 left-0 w-16 h-16 bg-white/30 rounded-full translate-y-8 -translate-x-8 group-hover:scale-150 transition-transform duration-700"></div>
-
-                  <CardContent className="relative z-10 p-8 text-center h-full flex flex-col justify-between">
-                    <div>
-                      {/* Emoji with Enhanced Styling */}
-                      <div className="text-6xl md:text-7xl mb-6 group-hover:scale-110 transition-transform duration-300 float">
-                        {item.emoji}
-                      </div>
-
-                      <h3 className="text-xl md:text-2xl font-bold mb-4 text-gray-800 group-hover:text-gray-900 transition-colors">
-                        {item.title}
-                      </h3>
-                    </div>
-
-                    <p className="text-gray-600 text-base leading-relaxed group-hover:text-gray-700 transition-colors">
-                      {item.description}
-                    </p>
-                  </CardContent>
-
-                  {/* Glow Effect */}
-                  <div className={`absolute inset-0 rounded-lg opacity-0 group-hover:opacity-20 transition-opacity duration-500 bg-gradient-to-r ${item.gradient} blur-xl`}></div>
-                </Card>
-              </AnimatedSection>
-            ))}
-          </div>
-
-          {/* Enhanced Bottom Decoration */}
-          <AnimatedSection animation="fade-in" delay={300} className="text-center mt-16">
-            <div className="inline-flex flex-col md:flex-row items-center gap-4 px-8 py-4 glass rounded-2xl shadow-lg">
-              <div className="flex items-center gap-2">
-                <div className="w-3 h-3 bg-green-500 rounded-full animate-pulse"></div>
-                <span className="text-gray-700 font-medium">مميزات حصرية</span>
-              </div>
-              <div className="hidden md:block w-px h-6 bg-gray-300"></div>
-              <span className="text-gray-600 text-sm">تجربة فريدة ومتطورة للطلاب</span>
-            </div>
-          </AnimatedSection>
-        </div>
-      </section>
 
       {/* Enhanced Testimonials Carousel */}
       <div id="testimonials">
@@ -384,71 +292,7 @@ const Index = () => {
         <ContactSection />
       </div>
 
-      {/* Enhanced Final CTA */}
-      <section className="py-20 bg-gradient-to-br from-blue-600 via-purple-600 to-indigo-700 text-white relative overflow-hidden">
-        {/* Animated Background */}
-        <div className="absolute inset-0">
-          <div className="absolute top-0 left-0 w-96 h-96 bg-white/5 rounded-full mix-blend-multiply filter blur-3xl animate-pulse"></div>
-          <div className="absolute top-0 right-0 w-96 h-96 bg-yellow-300/10 rounded-full mix-blend-multiply filter blur-3xl animate-pulse delay-75"></div>
-          <div className="absolute bottom-0 left-1/2 w-96 h-96 bg-pink-300/10 rounded-full mix-blend-multiply filter blur-3xl animate-pulse delay-150"></div>
-        </div>
 
-        {/* Grid Pattern */}
-        <div className="absolute inset-0 opacity-10">
-          <div className="h-full w-full bg-[linear-gradient(to_right,#ffffff1a_1px,transparent_1px),linear-gradient(to_bottom,#ffffff1a_1px,transparent_1px)] bg-[size:20px_20px]"></div>
-        </div>
-
-        <div className="container mx-auto px-4 text-center relative z-10">
-          <AnimatedSection>
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-white" style={{textShadow: '2px 2px 4px rgba(0,0,0,0.8), 0 0 10px rgba(255,255,255,0.3)'}}>
-              ابدأ رحلتك في العثور على السكن المثالي
-            </h2>
-            <div className="w-32 h-1 bg-gradient-to-r from-yellow-400 to-orange-400 mx-auto mb-8 rounded-full"></div>
-            <p className="text-xl md:text-2xl mb-10 max-w-4xl mx-auto leading-relaxed text-blue-100">
-              انضم إلى آلاف الطلاب الذين وجدوا سكنهم المثالي باستخدام تطبيق السهم
-              <br />
-              <span className="text-yellow-300 font-semibold">تحميل مجاني • بدون رسوم خفية</span>
-            </p>
-
-            <div className="flex flex-col sm:flex-row gap-6 justify-center items-center mb-12">
-              <Button
-                asChild
-                size="lg"
-                className="bg-white text-blue-600 hover:bg-yellow-50 hover:text-blue-700 text-xl md:text-2xl px-12 md:px-16 py-6 md:py-8 font-bold rounded-full shadow-2xl transition-all duration-300 hover:scale-110 pulse-glow"
-              >
-                <a href={downloadUrl} download>
-                  <Download className="ml-3 w-7 md:w-9 h-7 md:h-9" />
-                  حمّل التطبيق مجاناً
-                </a>
-              </Button>
-
-              <div className="flex items-center gap-3 text-blue-100">
-                <div className="flex -space-x-2">
-                  <div className="w-10 h-10 bg-gradient-to-br from-blue-400 to-purple-400 rounded-full border-2 border-white flex items-center justify-center text-white font-bold">أ</div>
-                  <div className="w-10 h-10 bg-gradient-to-br from-purple-400 to-pink-400 rounded-full border-2 border-white flex items-center justify-center text-white font-bold">م</div>
-                  <div className="w-10 h-10 bg-gradient-to-br from-pink-400 to-orange-400 rounded-full border-2 border-white flex items-center justify-center text-white font-bold">س</div>
-                </div>
-                <span className="text-sm">+10,000 طالب يثق بنا</span>
-              </div>
-            </div>
-
-            {/* Features Grid */}
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto">
-              {[
-                { icon: "🔒", text: "آمن 100%" },
-                { icon: "⚡", text: "سريع وسهل" },
-                { icon: "💰", text: "مجاني تماماً" },
-                { icon: "📱", text: "متاح الآن" }
-              ].map((item, index) => (
-                <div key={index} className="flex flex-col items-center gap-2 p-4 bg-white/10 backdrop-blur-sm rounded-xl border border-white/20 hover:bg-white/20 transition-all duration-300">
-                  <span className="text-2xl">{item.icon}</span>
-                  <span className="text-sm font-medium">{item.text}</span>
-                </div>
-              ))}
-            </div>
-          </AnimatedSection>
-        </div>
-        </section>
       </main>
 
     </div>
