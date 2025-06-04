@@ -8,8 +8,8 @@ import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
 
-// Get basename for GitHub Pages
-const basename = import.meta.env.PROD ? '/elsahm-dev' : '';
+// No basename needed for Netlify
+const basename = '';
 
 const App = () => (
   <QueryClientProvider client={queryClient}>

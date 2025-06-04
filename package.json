@@ -7,13 +7,13 @@
   "keywords": ["تسكين طلابي", "سكن طلاب", "إسكان جامعي", "تطبيق السهم", "سكن طلابي مصر"],
   "author": "شركة السهم للتسكين الطلابي",
   "license": "MIT",
-  "homepage": "https://zayed11112.github.io/elsahm-dev/",
+  "homepage": "https://elsahm-ar.netlify.app/",
   "repository": {
     "type": "git",
-    "url": "https://github.com/zayed11112/elsahm-dev.git"
+    "url": "https://github.com/zayed11112/elsahm_ar.git"
   },
   "bugs": {
-    "url": "https://github.com/zayed11112/elsahm-dev/issues"
+    "url": "https://github.com/zayed11112/elsahm_ar/issues"
   },
   "scripts": {
     "dev": "vite",

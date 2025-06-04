@@ -6,7 +6,7 @@
   publish = "dist"
 
   # Default build command
-  command = "npm install && npm run build"
+  command = "npm install && npm run build:netlify"
 
 [build.environment]
   # Node.js version
@@ -18,7 +18,7 @@
 # Production context: all deploys from the Production branch set in your site's
 # deploy settings will inherit these settings.
 [context.production]
-  command = "npm install && npm run build"
+  command = "npm install && npm run build:netlify"
 
 [context.production.environment]
   NODE_ENV = "production"
