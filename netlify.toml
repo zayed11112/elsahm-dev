@@ -18,7 +18,7 @@
 # Production context: all deploys from the Production branch set in your site's
 # deploy settings will inherit these settings.
 [context.production]
-  command = "npm install && npm run optimize:images && npm run build:netlify"
+  command = "npm install && npm run build:netlify"
 
 [context.production.environment]
   NODE_ENV = "production"

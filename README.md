@@ -67,4 +67,40 @@
 تقارير وإحصائيات عن أداء الإعلانات
 تطبيق السهم للتسكين يقدم تجربة متكاملة للطلاب الباحثين عن سكن، بدءاً من البحث وحتى الحجز والإقامة، مع توفير الدعم المستمر وضمان تجربة آمنة وموثوقة، مما يجعله منصة مثالية لخدمة قطاع التسكين الطلابي في مختلف المدن الجامعية.
 
+## Performance Optimization
+
+This project includes several performance optimizations:
+
+### Image Optimization
+
+The project includes a script for optimizing images. This is especially useful for development and before production deployment:
+
+```bash
+npm run optimize:images
+```
+
+This script:
+- Resizes large images to more reasonable dimensions
+- Optimizes image quality without visible quality loss
+- Creates WebP versions of images for modern browsers
+
+**Note:** Image optimization requires the `sharp` package, which is listed as a dev dependency. The script will gracefully handle environments where `sharp` is not available (like Netlify's build environment).
+
+### Code Splitting and Lazy Loading
+
+The application uses code splitting and lazy loading to improve initial load time:
+
+- Routes are loaded dynamically using `React.lazy`
+- Components are split into separate chunks
+- Non-critical CSS is loaded asynchronously
+
+### Bundle Optimization
+
+The build process includes several optimizations:
+
+- Tree shaking to remove unused code
+- Code minification and compression
+- Efficient chunk splitting
+- Modern JavaScript features with appropriate polyfills
+
 $env:PATH = "C:\Program Files\nodejs;" + $env:PATH; cd "d:\Elsahm_app\elsahm-student-home-main"; npm run dev

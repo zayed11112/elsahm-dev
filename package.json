@@ -31,7 +31,6 @@
     "lint": "eslint .",
     "preview": "vite preview",
     "netlify-dev": "netlify dev",
-    "preinstall": "npx only-allow npm",
     "typecheck": "tsc --noEmit",
     "optimize:images": "node scripts/optimize-images.js"
   },
