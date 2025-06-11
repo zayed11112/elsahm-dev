@@ -3,7 +3,15 @@ import react from "@vitejs/plugin-react-swc";
 import path from "path";
 import { componentTagger } from "lovable-tagger";
 import { splitVendorChunkPlugin } from 'vite';
-import { visualizer } from 'rollup-plugin-visualizer';
+
+// Import visualizer conditionally to prevent build failures
+let visualizer: any = null;
+try {
+  // Try to dynamically import the visualizer
+  visualizer = await import('rollup-plugin-visualizer').catch(() => null);
+} catch (error) {
+  console.log('Visualizer plugin not available, skipping...');
+}
 
 // Plugin to handle preloading of critical assets
 function preloadAssetsPlugin() {
@@ -58,7 +66,8 @@ export default defineConfig(({ mode }) => ({
     mode === 'development' && componentTagger(),
     splitVendorChunkPlugin(),
     mode === 'production' && preloadAssetsPlugin(),
-    mode === 'analyze' && visualizer({
+    // Only add visualizer if it's available and mode is 'analyze'
+    mode === 'analyze' && visualizer && visualizer.visualizer({
       open: true,
       gzipSize: true,
       brotliSize: true,
