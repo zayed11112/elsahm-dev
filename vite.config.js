@@ -4,17 +4,14 @@ import react from "@vitejs/plugin-react-swc";
 import path from "path";
 import { splitVendorChunkPlugin } from 'vite';
 
-// Simple preload assets plugin
+// Simple preload assets plugin - but this is now disabled to prevent warnings
 function simplePreloadAssetsPlugin() {
   return {
     name: 'vite-plugin-simple-preload',
     transformIndexHtml(html) {
-      // Insert simple preload hints
-      const preloadLinks = `
-        <link rel="preload" href="/assets/index.css" as="style">
-        <link rel="preload" href="/assets/index.js" as="script" crossorigin>
-      `;
-      return html.replace(/<head>/, `<head>${preloadLinks}`);
+      // Don't add preload links to avoid issues with content decoding
+      // Just return the HTML as is
+      return html;
     }
   };
 }
@@ -26,7 +23,8 @@ export default defineConfig(({ mode }) => ({
   plugins: [
     react(),
     splitVendorChunkPlugin(),
-    mode === 'production' && simplePreloadAssetsPlugin(),
+    // Disable preload plugin since it's causing issues
+    // mode === 'production' && simplePreloadAssetsPlugin(),
   ].filter(Boolean),
   resolve: {
     alias: {

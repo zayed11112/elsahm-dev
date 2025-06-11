@@ -27,6 +27,42 @@ async function runCommand(command, args) {
   });
 }
 
+// Function to fix _headers file to prevent content encoding issues
+function fixHeadersFile() {
+  try {
+    console.log('Fixing _headers file to prevent content encoding issues...');
+    
+    const distDir = path.join(rootDir, 'dist');
+    const headersPath = path.join(distDir, '_headers');
+    
+    // Check if _headers file exists
+    if (fs.existsSync(headersPath)) {
+      let headersContent = fs.readFileSync(headersPath, 'utf8');
+      
+      // Remove any content-encoding headers that might cause issues
+      headersContent = headersContent.replace(/Content-Encoding:.*\n/g, '');
+      
+      fs.writeFileSync(headersPath, headersContent);
+      console.log('Successfully fixed _headers file');
+    } else {
+      // Create minimal _headers file
+      const minimalHeaders = `/assets/*.*
+  Cache-Control: public, max-age=31536000, immutable
+
+/*
+  X-Frame-Options: DENY
+  X-XSS-Protection: 1; mode=block
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+`;
+      fs.writeFileSync(headersPath, minimalHeaders);
+      console.log('Created minimal _headers file');
+    }
+  } catch (error) {
+    console.warn('Failed to fix _headers file:', error.message);
+  }
+}
+
 // Main build process
 async function build() {
   try {
@@ -37,6 +73,9 @@ async function build() {
       console.log('Attempting build with vite.config.ts...');
       await runCommand('vite', ['build', '--mode', 'production']);
       console.log('Build completed successfully!');
+      
+      // Fix headers file to prevent content encoding issues
+      fixHeadersFile();
       return;
     } catch (error) {
       console.warn('Failed to build with vite.config.ts:', error.message);
@@ -52,6 +91,9 @@ async function build() {
       
       await runCommand('vite', ['build', '--mode', 'production', '--config', 'vite.config.js']);
       console.log('Build completed successfully with fallback config!');
+      
+      // Fix headers file to prevent content encoding issues
+      fixHeadersFile();
       return;
     } catch (fallbackError) {
       console.error('Fallback build also failed:', fallbackError.message);

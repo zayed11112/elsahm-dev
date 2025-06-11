@@ -13,41 +13,15 @@ try {
   console.log('Visualizer plugin not available, skipping...');
 }
 
-// Plugin to handle preloading of critical assets
+// Plugin to handle preloading of critical assets - now disabled to prevent content decoding issues
 function preloadAssetsPlugin() {
   return {
     name: 'vite-plugin-preload-assets',
     transformIndexHtml: {
       enforce: 'post',
-      transform(html, ctx) {
-        // Skip during development mode to avoid 404 errors
-        if (!ctx.bundle) return html;
-        
-        // Extract JS and CSS filenames from bundle
-        const jsFiles = Object.keys(ctx.bundle || {})
-          .filter(key => key.endsWith('.js') && key.includes('index'))
-          .map(key => '/' + key);
-          
-        const cssFiles = Object.keys(ctx.bundle || {})
-          .filter(key => key.endsWith('.css'))
-          .map(key => '/' + key);
-
-        // Add preload links
-        let preloadLinks = '';
-        
-        jsFiles.forEach(file => {
-          preloadLinks += `<link rel="preload" href="${file}" as="script" crossorigin>\n`;
-        });
-        
-        cssFiles.forEach(file => {
-          preloadLinks += `<link rel="preload" href="${file}" as="style">\n`;
-        });
-
-        // Add favicon preload
-        preloadLinks += `<link rel="preload" href="/favicon.ico" as="image">\n`;
-        
-        // Insert preload links after the first <head> tag
-        return html.replace(/<head>/, `<head>\n${preloadLinks}`);
+      transform(html) {
+        // Do not add preload links to avoid content decoding issues
+        return html;
       }
     }
   };
@@ -65,7 +39,8 @@ export default defineConfig(({ mode }) => ({
     react(),
     mode === 'development' && componentTagger(),
     splitVendorChunkPlugin(),
-    mode === 'production' && preloadAssetsPlugin(),
+    // Disable preload plugin since it's causing issues
+    // mode === 'production' && preloadAssetsPlugin(),
     // Only add visualizer if it's available and mode is 'analyze'
     mode === 'analyze' && visualizer && visualizer.visualizer({
       open: true,
