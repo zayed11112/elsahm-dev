@@ -9,6 +9,8 @@ const StatsSection = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    setIsVisible(false);
+    
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
@@ -16,8 +18,8 @@ const StatsSection = () => {
         }
       },
       {
-        threshold: 0.2,
-        rootMargin: '0px 0px -100px 0px'
+        threshold: 0.1,
+        rootMargin: '0px 0px -10% 0px'
       }
     );
 
@@ -35,7 +37,7 @@ const StatsSection = () => {
   const stats = [
     {
       icon: <Users className="w-8 h-8" />,
-      number: "10,000+",
+      number: "8,742+",
       label: "طالب مسجل",
       description: "ينضم إلينا عشرات الطلاب يومياً من مختلف الجامعات",
       gradient: "from-blue-500 to-cyan-500",
@@ -46,7 +48,7 @@ const StatsSection = () => {
     },
     {
       icon: <Home className="w-8 h-8" />,
-      number: "2,500+",
+      number: "2,376",
       label: "وحدة سكنية",
       description: "وحدات سكنية متنوعة تناسب احتياجات ومتطلبات كل طالب",
       gradient: "from-emerald-500 to-teal-500",
@@ -80,7 +82,10 @@ const StatsSection = () => {
   ];
 
   return (
-    <section ref={sectionRef} className="py-20 bg-gradient-to-br from-gray-50 via-blue-50 to-indigo-50 relative overflow-hidden">
+    <section 
+      ref={sectionRef} 
+      className="py-20 bg-gradient-to-br from-gray-50 via-blue-50 to-indigo-50 relative overflow-hidden"
+    >
       {/* Animated Background Elements */}
       <div className="absolute inset-0 overflow-hidden">
         {/* Floating Circles */}
@@ -95,8 +100,8 @@ const StatsSection = () => {
       </div>
 
       <div className="container mx-auto px-4 relative z-10">
-        {/* Heading with Animated Reveal */}
-        <div className={`text-center mb-20 transform transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+        {/* Heading with Static Display */}
+        <div className="text-center mb-20">
           <div className="flex items-center justify-center mb-4">
             <div className="h-1 w-12 bg-gradient-to-r from-blue-500 to-indigo-500 rounded-full"></div>
             <span className="mx-4 text-blue-600 font-medium text-lg">إحصائيات السهم</span>
@@ -112,17 +117,11 @@ const StatsSection = () => {
           </p>
         </div>
 
-        {/* New Stats Grid Layout */}
+        {/* Stats Grid Layout - No Transition Effects */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
           {stats.map((stat, index) => (
-            <div 
-              key={index} 
-              className={`transform transition-all duration-1000 ${
-                isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
-              }`}
-              style={{ transitionDelay: `${index * 200}ms` }}
-            >
-              <Card className="group relative overflow-hidden border border-gray-100 bg-white hover:border-transparent shadow-md hover:shadow-2xl transition-all duration-500 hover:-translate-y-1 h-full">
+            <div key={index}>
+              <Card className="relative overflow-hidden border border-gray-100 bg-white hover:border-transparent shadow-md hover:shadow-2xl h-full">
                 {/* Card Background Gradient Overlay on Hover */}
                 <div className={`absolute inset-0 bg-gradient-to-br ${stat.gradient} opacity-0 group-hover:opacity-5 transition-opacity duration-500`}></div>
                 
@@ -131,7 +130,7 @@ const StatsSection = () => {
                   <div className="absolute inset-0 bg-[radial-gradient(circle,_#00000003_1px,_transparent_1px)] [background-size:12px_12px] [mask-image:radial-gradient(ellipse_50%_50%_at_50%_50%,#000_70%,transparent_100%)]"></div>
                 </div>
 
-                <CardContent className="relative z-10 p-8">
+                <CardContent className="relative z-10 p-6">
                   {/* Badge */}
                   <div className="flex justify-end mb-2">
                     <span className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium ${stat.badgeColor}`}>
@@ -143,8 +142,8 @@ const StatsSection = () => {
                   {/* Card Content */}
                   <div className="text-center">
                     {/* Icon with Ring Effect */}
-                    <div className="relative mx-auto mb-6">
-                      <div className={`w-16 h-16 rounded-full bg-gradient-to-br ${stat.bgGradient} flex items-center justify-center transition-transform duration-300 group-hover:scale-110`}>
+                    <div className="relative mx-auto mb-4">
+                      <div className={`w-16 h-16 rounded-full bg-gradient-to-br ${stat.bgGradient} flex items-center justify-center`}>
                         <div className={`text-transparent bg-clip-text bg-gradient-to-r ${stat.gradient}`}>
                           {stat.icon}
                         </div>
@@ -152,38 +151,41 @@ const StatsSection = () => {
                       <div className={`absolute inset-0 rounded-full border-2 border-dashed ${stat.borderColor} border-opacity-50 animate-spin-slow`}></div>
                     </div>
                     
-                    {/* Number with Enhanced Animation */}
-                    <AnimatedCounter
-                      value={stat.number}
-                      duration={3000}
-                      delay={index * 150}
-                      gradient={stat.gradient}
-                      className="group-hover:scale-110 transition-transform"
-                    />
+                    {/* Number Counter with Fixed Height Container */}
+                    <div className="h-16 flex items-center justify-center mb-2">
+                      {isVisible && (
+                        <AnimatedCounter
+                          value={stat.number}
+                          duration={2500}
+                          delay={index * 100}
+                          gradient={stat.gradient}
+                        />
+                      )}
+                    </div>
                     
                     {/* Label */}
-                    <h3 className="text-xl font-bold mb-3 text-gray-800 group-hover:text-gray-900 transition-colors">
+                    <h3 className="text-lg font-bold mb-2 text-gray-800">
                       {stat.label}
                     </h3>
                     
-                    {/* Description with Expanded Info */}
-                    <p className="text-gray-600 text-sm group-hover:text-gray-700 transition-all">
+                    {/* Description */}
+                    <p className="text-gray-600 text-sm">
                       {stat.description}
                     </p>
                   </div>
                 </CardContent>
 
-                {/* Bottom Border Accent */}
-                <div className={`absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r ${stat.gradient} transform origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-500`}></div>
+                {/* Bottom Border */}
+                <div className={`absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r ${stat.gradient}`}></div>
               </Card>
             </div>
           ))}
         </div>
         
-        {/* Summary */}
-        <div className={`mt-16 text-center transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`} style={{ transitionDelay: '800ms' }}>
+        {/* Summary - No Transition */}
+        <div className="mt-16 text-center">
           <p className="text-lg text-gray-600">
-             نستمر في النمو والتطور لخدمة  
+            نستمر في النمو والتطور لخدمة  
             <span className="mx-1 font-bold text-blue-600"> مجتمع الطلاب </span>
             بأفضل الحلول السكنية
           </p>

@@ -1,13 +1,10 @@
-
 import React from 'react';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Search, Image, Shield, User, MessageSquare, Book, CheckCircle } from "lucide-react";
-
 
 const FeaturesSection = () => {
   const features = [
     {
-      icon: <Search className="w-8 h-8" />,
+      icon: <Search strokeWidth={2} />,
       title: "البحث الذكي المتقدم",
       description: "تقنية بحث متطورة تساعدك في العثور على السكن المثالي",
       details: [
@@ -16,12 +13,12 @@ const FeaturesSection = () => {
         "خرائط تفاعلية مع المواصلات",
         "حفظ عمليات البحث المفضلة"
       ],
-      gradient: "from-blue-500 to-cyan-500",
-      bgColor: "bg-blue-50",
-      iconBg: "bg-blue-100"
+      gradient: "from-blue-600 to-cyan-600",
+      color: "blue",
+      shadow: "shadow-blue-900/5"
     },
     {
-      icon: <Image className="w-8 h-8" />,
+      icon: <Image strokeWidth={2} />,
       title: "معاينة شاملة وتفاعلية",
       description: "استكشف كل تفاصيل السكن قبل اتخاذ القرار",
       details: [
@@ -30,12 +27,12 @@ const FeaturesSection = () => {
         "فيديوهات توضيحية للمرافق",
         "مخططات الوحدات السكنية"
       ],
-      gradient: "from-emerald-500 to-teal-500",
-      bgColor: "bg-emerald-50",
-      iconBg: "bg-emerald-100"
+      gradient: "from-teal-600 to-emerald-600",
+      color: "emerald",
+      shadow: "shadow-emerald-900/5"
     },
     {
-      icon: <Shield className="w-8 h-8" />,
+      icon: <Shield strokeWidth={2} />,
       title: "أمان وحماية متقدمة",
       description: "نظام حماية شامل لضمان أمان معاملاتك",
       details: [
@@ -44,12 +41,12 @@ const FeaturesSection = () => {
         "ضمان استرداد الأموال",
         "التحقق من هوية المالكين"
       ],
-      gradient: "from-purple-500 to-violet-500",
-      bgColor: "bg-purple-50",
-      iconBg: "bg-purple-100"
+      gradient: "from-violet-600 to-purple-600",
+      color: "purple",
+      shadow: "shadow-purple-900/5"
     },
     {
-      icon: <User className="w-8 h-8" />,
+      icon: <User strokeWidth={2} />,
       title: "إدارة ذكية للحساب",
       description: "تحكم كامل في حسابك وتجربة مخصصة",
       details: [
@@ -58,12 +55,12 @@ const FeaturesSection = () => {
         "إشعارات ذكية مخصصة",
         "تاريخ كامل للمعاملات"
       ],
-      gradient: "from-orange-500 to-amber-500",
-      bgColor: "bg-orange-50",
-      iconBg: "bg-orange-100"
+      gradient: "from-amber-500 to-orange-600",
+      color: "orange",
+      shadow: "shadow-orange-900/5"
     },
     {
-      icon: <MessageSquare className="w-8 h-8" />,
+      icon: <MessageSquare strokeWidth={2} />,
       title: "دعم فني متميز",
       description: "فريق دعم محترف متاح على مدار الساعة",
       details: [
@@ -72,12 +69,12 @@ const FeaturesSection = () => {
         "مكتبة شاملة للأسئلة الشائعة",
         "دعم متعدد اللغات"
       ],
-      gradient: "from-rose-500 to-pink-500",
-      bgColor: "bg-rose-50",
-      iconBg: "bg-rose-100"
+      gradient: "from-pink-600 to-rose-600",
+      color: "rose",
+      shadow: "shadow-rose-900/5"
     },
     {
-      icon: <Book className="w-8 h-8" />,
+      icon: <Book strokeWidth={2} />,
       title: "مجتمع طلابي نشط",
       description: "انضم لمجتمع من آلاف الطلاب وشارك التجارب",
       details: [
@@ -86,99 +83,118 @@ const FeaturesSection = () => {
         "مشاركة النصائح والتجارب",
         "فعاليات ومسابقات طلابية"
       ],
-      gradient: "from-indigo-500 to-blue-500",
-      bgColor: "bg-indigo-50",
-      iconBg: "bg-indigo-100"
+      gradient: "from-blue-600 to-indigo-600",
+      color: "indigo",
+      shadow: "shadow-indigo-900/5"
     }
   ];
 
   return (
-    <section id="features" className="py-24 bg-gradient-to-br from-slate-50 via-white to-blue-50 relative overflow-hidden">
-      {/* Enhanced Background Pattern */}
-      <div className="absolute inset-0">
-        <div className="absolute top-0 left-0 w-96 h-96 bg-gradient-to-br from-blue-200/30 to-cyan-200/30 rounded-full mix-blend-multiply filter blur-3xl animate-pulse"></div>
-        <div className="absolute top-0 right-0 w-96 h-96 bg-gradient-to-br from-purple-200/30 to-pink-200/30 rounded-full mix-blend-multiply filter blur-3xl animate-pulse delay-75"></div>
-        <div className="absolute bottom-0 left-1/2 w-96 h-96 bg-gradient-to-br from-emerald-200/30 to-teal-200/30 rounded-full mix-blend-multiply filter blur-3xl animate-pulse delay-150"></div>
-      </div>
-
-      {/* Grid Pattern */}
+    <section id="features" className="py-24 relative">
+      {/* Modern Background */}
+      <div className="absolute inset-0 bg-slate-50/70"></div>
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(210,210,250,0.2),transparent)]"></div>
+      
+      {/* Light Grid Pattern */}
       <div className="absolute inset-0 opacity-[0.02]">
-        <div className="h-full w-full bg-[linear-gradient(to_right,#1e293b_1px,transparent_1px),linear-gradient(to_bottom,#1e293b_1px,transparent_1px)] bg-[size:40px_40px]"></div>
+        <div className="h-full w-full bg-[linear-gradient(to_right,#1e293b_1px,transparent_1px),linear-gradient(to_bottom,#1e293b_1px,transparent_1px)] bg-[size:80px_80px]"></div>
       </div>
+      
+      {/* Subtle Top Border */}
+      <div className="absolute top-0 inset-x-0 h-0.5 bg-gradient-to-r from-transparent via-blue-500/40 to-transparent"></div>
 
-      <div className="container mx-auto px-4 relative z-10">
-        <div className="text-center mb-20">
-          <div className="inline-flex items-center gap-2 px-4 py-2 bg-blue-100 text-blue-700 rounded-full text-sm font-medium mb-6">
-            <CheckCircle className="w-4 h-4" />
-            مميزات حصرية ومتطورة
+      <div className="container mx-auto max-w-6xl px-4 sm:px-6 relative z-10">
+        {/* Modern Heading */}
+        <div className="text-center mb-16 md:mb-20">
+          <div className="inline-flex items-center rounded-full border border-blue-100 bg-blue-50/50 backdrop-blur-sm px-4 py-1.5 mb-5">
+            <span className="text-sm font-medium text-blue-600 mx-auto">مميزات متميزة</span>
           </div>
-
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-gray-900" style={{textShadow: '1px 1px 2px rgba(0,0,0,0.1)'}}>
-            مميزات التطبيق
+          
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight mb-5">
+            <span className="text-gray-900">مميزات </span>
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-blue-500">التطبيق</span>
           </h2>
-
-          <div className="flex items-center justify-center gap-2 mb-8">
-            <div className="w-12 h-1 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-full"></div>
-            <div className="w-3 h-3 bg-blue-500 rounded-full"></div>
-            <div className="w-12 h-1 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-full"></div>
-          </div>
-
-          <p className="text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed">
-            اكتشف مجموعة شاملة من المميزات المتطورة التي تجعل تجربة البحث عن السكن الطلابي
-            <br />
-            <span className="text-blue-600 font-semibold">سهلة وآمنة وممتعة</span>
+          
+          <p className="text-gray-600 md:text-lg max-w-3xl mx-auto">
+            تم تصميم هذه المميزات لتوفير تجربة سكن طلابي لا مثيل لها،
+            <span className="text-blue-600 font-medium"> سهلة وآمنة وفعالة</span>
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {/* Modern Card Layout */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-5 lg:gap-6">
           {features.map((feature, index) => (
-            <div key={index}>
-              <Card className={`group relative overflow-hidden border border-gray-200/50 ${feature.bgColor} hover:bg-white shadow-lg hover:shadow-2xl transition-all duration-400 hover:scale-[1.02] h-full`}>
-                {/* Gradient Overlay */}
-                <div className={`absolute inset-0 bg-gradient-to-br ${feature.gradient} opacity-0 group-hover:opacity-5 transition-opacity duration-400`}></div>
-
-                {/* Top Border Accent */}
-                <div className={`absolute top-0 left-0 right-0 h-1 bg-gradient-to-r ${feature.gradient}`}></div>
-
-                <CardHeader className="relative z-10 pb-4">
-                  <div className="flex items-start gap-4">
-                    <div className={`${feature.iconBg} p-4 rounded-2xl group-hover:scale-110 transition-transform duration-500 shadow-sm`}>
-                      <div className="text-gray-700">
+            <div 
+              key={index} 
+              className="feature-card group h-full"
+            >
+              <div className={`h-full relative rounded-2xl bg-white ${feature.shadow} shadow-xl backdrop-blur-sm overflow-hidden transition-all duration-300`}>
+                {/* Top gradient bar */}
+                <div className={`absolute inset-x-0 top-0 h-1 bg-gradient-to-r ${feature.gradient}`}></div>
+                
+                {/* Card content with modern spacing */}
+                <div className="p-6 sm:p-7">
+                  {/* Icon area */}
+                  <div className="mb-6 flex items-center">
+                    <div className={`relative w-12 h-12 rounded-xl flex items-center justify-center bg-gradient-to-br ${feature.gradient} text-white`}>
+                      {feature.icon}
+                      <div className="absolute inset-0 rounded-xl bg-white opacity-90 group-hover:opacity-80 transition-opacity"></div>
+                      <div className={`absolute inset-0 flex items-center justify-center text-transparent bg-clip-text bg-gradient-to-br ${feature.gradient}`}>
                         {feature.icon}
                       </div>
                     </div>
-                    <div className="flex-1">
-                      <CardTitle className="text-xl font-bold text-gray-900 mb-2 group-hover:text-gray-800 transition-colors">
+                    
+                    <div className="mr-4 flex-1">
+                      <h3 className="text-xl font-bold text-gray-900 tracking-tight mb-1">
                         {feature.title}
-                      </CardTitle>
-                      <CardDescription className="text-gray-600 text-sm leading-relaxed">
+                      </h3>
+                      <p className="text-sm text-gray-600">
                         {feature.description}
-                      </CardDescription>
+                      </p>
                     </div>
                   </div>
-                </CardHeader>
-
-                <CardContent className="relative z-10 pt-0">
+                  
+                  {/* Feature details with elegant styling */}
                   <div className="space-y-3">
                     {feature.details.map((detail, detailIndex) => (
-                      <div key={detailIndex} className="flex items-center gap-3 text-gray-700 text-sm">
-                        <CheckCircle className="w-4 h-4 text-green-500 flex-shrink-0" />
-                        <span className="leading-relaxed">{detail}</span>
+                      <div 
+                        key={detailIndex} 
+                        className="flex items-center gap-2.5"
+                      >
+                        <div className={`text-${feature.color}-500 flex-shrink-0`}>
+                          <CheckCircle size={16} />
+                        </div>
+                        <span className="text-gray-700 text-sm">{detail}</span>
                       </div>
                     ))}
                   </div>
-                </CardContent>
-
-                {/* Decorative Elements */}
-                <div className="absolute top-4 right-4 w-20 h-20 bg-gradient-to-br from-white/30 to-transparent rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-400"></div>
-                <div className="absolute bottom-4 left-4 w-16 h-16 bg-gradient-to-tr from-white/20 to-transparent rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-400"></div>
-              </Card>
+                </div>
+                
+                {/* Bottom subtle decorative shadow */}
+                <div className={`absolute bottom-0 inset-x-0 h-1 bg-gradient-to-r ${feature.gradient} opacity-[0.15]`}></div>
+              </div>
             </div>
           ))}
         </div>
-
-
       </div>
+
+      {/* Custom CSS for feature cards */}
+      <style jsx global>{`
+        .feature-card {
+          transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+        }
+        
+        .feature-card:hover {
+          transform: translateY(-5px);
+        }
+        
+        .text-blue-500 { color: rgb(59, 130, 246); }
+        .text-emerald-500 { color: rgb(16, 185, 129); }
+        .text-purple-500 { color: rgb(139, 92, 246); }
+        .text-orange-500 { color: rgb(249, 115, 22); }
+        .text-rose-500 { color: rgb(244, 63, 94); }
+        .text-indigo-500 { color: rgb(99, 102, 241); }
+      `}</style>
     </section>
   );
 };

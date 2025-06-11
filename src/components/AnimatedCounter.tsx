@@ -25,9 +25,10 @@ const AnimatedCounter: React.FC<AnimatedCounterProps> = ({
   const extractNumber = (str: string): number => {
     // التعامل مع الأرقام العربية والإنجليزية
     const arabicToEnglish = str.replace(/[٠-٩]/g, (d) => '٠١٢٣٤٥٦٧٨٩'.indexOf(d).toString());
-    const match = arabicToEnglish.match(/[\d,]+/);
+    const match = arabicToEnglish.match(/[\d,.]+/);
     if (match) {
-      return parseInt(match[0].replace(/,/g, ''), 10);
+      // تحويل الفواصل والنقاط
+      return parseFloat(match[0].replace(/,/g, '').replace('+', ''));
     }
     return 0;
   };
@@ -35,7 +36,7 @@ const AnimatedCounter: React.FC<AnimatedCounterProps> = ({
   // استخراج النص غير الرقمي
   const extractNonNumeric = (str: string): { prefix: string; suffix: string } => {
     const arabicToEnglish = str.replace(/[٠-٩]/g, (d) => '٠١٢٣٤٥٦٧٨٩'.indexOf(d).toString());
-    const match = arabicToEnglish.match(/^([^\d]*)([\d,]+)(.*)$/);
+    const match = arabicToEnglish.match(/^([^\d]*)([.\d,]+)(.*)$/);
     if (match) {
       return {
         prefix: str.substring(0, match[1].length),
@@ -47,21 +48,30 @@ const AnimatedCounter: React.FC<AnimatedCounterProps> = ({
 
   // تنسيق الرقم مع الفواصل
   const formatNumber = (num: number): string => {
-    return num.toLocaleString('en-US');
+    // إذا كان الرقم صحيحًا، نستخدم التنسيق العادي
+    if (Number.isInteger(num)) {
+      return num.toLocaleString('en-US');
+    }
+    // إذا كان الرقم عشرياً، نحافظ على رقم عشري واحد
+    return num.toFixed(1).replace(/\B(?=(\d{3})+(?!\d))/g, ',');
   };
 
-  // Intersection Observer للكشف عن ظهور العنصر
+  // إعادة تعيين Intersection Observer
   useEffect(() => {
+    // دائماً نعيد محاولة الظهور عند التحميل
+    setHasAnimated(false);
+    setIsVisible(false);
+
     const observer = new IntersectionObserver(
       ([entry]) => {
-        if (entry.isIntersecting && !hasAnimated) {
+        if (entry.isIntersecting) {
           setIsVisible(true);
           setHasAnimated(true);
         }
       },
       {
-        threshold: 0.3,
-        rootMargin: '0px 0px -50px 0px'
+        threshold: 0.1, // تقليل قيمة العتبة لتنشيط الرصد بشكل أسرع
+        rootMargin: '0px 0px -10% 0px'
       }
     );
 
@@ -70,12 +80,11 @@ const AnimatedCounter: React.FC<AnimatedCounterProps> = ({
     }
 
     return () => {
-      const currentRef = counterRef.current;
-      if (currentRef) {
-        observer.unobserve(currentRef);
+      if (counterRef.current) {
+        observer.unobserve(counterRef.current);
       }
     };
-  }, [hasAnimated]);
+  }, [value]); // إعادة التشغيل عند تغيير القيمة
 
   // انيميشن العد
   useEffect(() => {
@@ -88,6 +97,9 @@ const AnimatedCounter: React.FC<AnimatedCounterProps> = ({
       setDisplayValue(value);
       return;
     }
+
+    // تعيين القيمة المبدئية
+    setDisplayValue(`${prefix}0${suffix}`);
 
     // إضافة تأخير قبل بدء الانيميشن
     const startAnimation = () => {
@@ -102,8 +114,8 @@ const AnimatedCounter: React.FC<AnimatedCounterProps> = ({
         const progress = Math.min(elapsed / duration, 1);
 
         // استخدام easing function للحصول على انيميشن أكثر سلاسة
-        const easeOutCubic = 1 - Math.pow(1 - progress, 3);
-        const currentNumber = Math.floor(targetNumber * easeOutCubic);
+        const easeOutQuint = 1 - Math.pow(1 - progress, 5);
+        const currentNumber = targetNumber * easeOutQuint;
 
         setDisplayValue(`${prefix}${formatNumber(currentNumber)}${suffix}`);
 
@@ -112,17 +124,6 @@ const AnimatedCounter: React.FC<AnimatedCounterProps> = ({
         } else {
           setDisplayValue(value);
           setIsAnimating(false);
-          // إضافة تأثير bounce عند انتهاء العد
-          setTimeout(() => {
-            if (counterRef.current) {
-              counterRef.current.classList.add('counter-bounce');
-              setTimeout(() => {
-                if (counterRef.current) {
-                  counterRef.current.classList.remove('counter-bounce');
-                }
-              }, 600);
-            }
-          }, 100);
         }
       };
 
@@ -146,12 +147,10 @@ const AnimatedCounter: React.FC<AnimatedCounterProps> = ({
   return (
     <div
       ref={counterRef}
-      className={`${className} transition-all duration-500 ${isVisible ? 'scale-100 opacity-100' : 'scale-95 opacity-0'}`}
+      className={`${className} w-full flex items-center justify-center`}
     >
-      <div className={`text-4xl md:text-5xl font-bold mb-2 bg-gradient-to-r ${gradient} bg-clip-text text-transparent transition-all duration-300 ${isAnimating ? 'counter-shimmer' : ''}`}>
-        <span className="inline-block">
-          {displayValue}
-        </span>
+      <div className={`text-2xl md:text-3xl font-bold bg-gradient-to-r ${gradient} bg-clip-text text-transparent overflow-visible`}>
+        {displayValue}
       </div>
     </div>
   );
