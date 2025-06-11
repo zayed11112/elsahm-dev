@@ -12,7 +12,7 @@ import TestimonialsCarousel from "@/components/TestimonialsCarousel";
 import TypewriterEffect from "@/components/TypewriterEffect";
 import SEOHead from "@/components/SEOHead";
 
-import Navbar from "@/components/Navbar";
+
 
 const Index = () => {
   const downloadUrl = "https://github.com/zayed11112/elsahm-dev/releases/download/v1.0.0/Elsahm-App-v1.0.0.apk";
@@ -118,9 +118,7 @@ const Index = () => {
         structuredData={structuredData}
       />
 
-      {/* Navigation Bar */}
-      <Navbar downloadUrl={downloadUrl} />
-
+    
       {/* Enhanced Fixed Floating Download Button for Mobile */}
       <div className="fixed bottom-6 left-1/2 transform -translate-x-1/2 z-50 md:hidden">
         <Button
