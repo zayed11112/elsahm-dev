@@ -14,7 +14,7 @@ import SEOHead from "@/components/SEOHead";
 
 
 const Index = () => {
-  const downloadUrl = "https://github.com/zayed11112/elsahm-dev/releases/download/v1.0.0/Elsahm-App-v1.0.0.apk";
+  const downloadUrl = "https://github.com/zayed11112/elsahm-dev/releases/download/v1.0.0/Elsahm-App-v1.0.1.apk";
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
@@ -183,11 +183,11 @@ const Index = () => {
                 <div className="mb-8">
                   <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-white opacity-95" style={{textShadow: '0px 2px 10px rgba(0,0,0,0.2)'}}>
                     مع تطبيق <TypewriterEffect
-                      text="السهم"
+                      text="الــســهــم"
                       speed={100}
                       deleteSpeed={60}
                       pauseDuration={2000}
-                      className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-200 via-yellow-300 to-yellow-400 inline"
+                      className="text-yellow-300 font-extrabold inline"
                       showCursor={true}
                       loop={true}
                     />
@@ -217,14 +217,15 @@ const Index = () => {
                   <Button
                     asChild
                     size="lg"
-                    className="relative overflow-hidden btn-gradient-primary text-lg md:text-xl px-8 md:px-10 py-4 md:py-6 font-bold rounded-full shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-1 group"
+                    className="relative overflow-hidden bg-gradient-to-r from-amber-500 via-yellow-500 to-orange-500 text-lg md:text-xl px-8 md:px-10 py-4 md:py-6 font-bold rounded-full shadow-[0_0_15px_rgba(255,190,0,0.5)] hover:shadow-[0_0_25px_rgba(255,190,0,0.7)] transition-all duration-500 hover:-translate-y-1 hover:scale-105 border-2 border-yellow-300/30 animate-pulse-slow group"
                   >
-                    <a href={downloadUrl} download>
+                    <a href={downloadUrl} download className="flex items-center justify-center">
                       <div className="absolute inset-0 bg-gradient-to-r from-yellow-400/20 via-orange-500/20 to-red-500/20 group-hover:opacity-75 transition-opacity duration-300"></div>
                       <div className="relative flex items-center justify-center">
-                        <Download className="ml-3 w-5 md:w-6 h-5 md:h-6 group-hover:scale-110 transition-transform duration-300" />
+                        <Download className="ml-3 w-6 md:w-7 h-6 md:h-7 group-hover:scale-110 group-hover:rotate-12 transition-all duration-300" />
                         <span>حمّل التطبيق مجاناً</span>
                       </div>
+                      <div className="absolute -inset-1 bg-gradient-to-r from-yellow-400/0 via-yellow-400/40 to-yellow-400/0 opacity-0 group-hover:opacity-100 transition-opacity duration-1000 blur-md animate-shimmer"></div>
                     </a>
                   </Button>
                   
@@ -250,13 +251,21 @@ const Index = () => {
                   </div>
                   <div className="flex items-center gap-2">
                     <span className="flex items-center justify-center w-6 h-6 rounded-full bg-white/20">
-                      <span className="text-xs">📱</span>
+                      <img 
+                        src="https://img.icons8.com/?size=100&id=P2AnGyiJxMpp&format=png&color=000000" 
+                        alt="أندرويد"
+                        className="w-4 h-4"
+                      />
                     </span>
                     <span className="text-white/90 text-sm">أندرويد</span>
                   </div>
                   <div className="flex items-center gap-2">
                     <span className="flex items-center justify-center w-6 h-6 rounded-full bg-white/20">
-                      <span className="text-xs">🍎</span>
+                      <img 
+                        src="https://img.icons8.com/?size=100&id=30840&format=png&color=000000" 
+                        alt="آي أو إس"
+                        className="w-4 h-4"
+                      />
                     </span>
                     <span className="text-white/70 text-sm">iOS قريباً</span>
                   </div>
