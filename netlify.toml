@@ -18,7 +18,7 @@
 # Production context: all deploys from the Production branch set in your site's
 # deploy settings will inherit these settings.
 [context.production]
-  command = "npm install && npm run build:netlify"
+  command = "npm install && npm run optimize:images && npm run build:netlify"
 
 [context.production.environment]
   NODE_ENV = "production"
@@ -48,35 +48,45 @@
     X-Content-Type-Options = "nosniff"
     Referrer-Policy = "strict-origin-when-cross-origin"
     Permissions-Policy = "camera=(), microphone=(), geolocation=()"
+    # Enable HTTP/2 server push
+    Link = "</assets/index.js>; rel=preload; as=script, </assets/index.css>; rel=preload; as=style"
+    # Content security policy
+    Content-Security-Policy = "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self' data:; connect-src 'self' https:; frame-ancestors 'none';"
 
 [[headers]]
-  for = "/static/*"
+  for = "/assets/*.js"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+    Content-Type = "application/javascript; charset=utf-8"
+    Content-Encoding = "br, gzip"
+
+[[headers]]
+  for = "/assets/*.css"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+    Content-Type = "text/css; charset=utf-8"
+    Content-Encoding = "br, gzip"
+
+[[headers]]
+  for = "/assets/fonts/*"
   [headers.values]
     Cache-Control = "public, max-age=31536000, immutable"
 
 [[headers]]
-  for = "*.js"
+  for = "/assets/images/*"
   [headers.values]
     Cache-Control = "public, max-age=31536000, immutable"
 
-[[headers]]
-  for = "*.css"
-  [headers.values]
-    Cache-Control = "public, max-age=31536000, immutable"
-
-[[headers]]
-  for = "*.woff2"
-  [headers.values]
-    Cache-Control = "public, max-age=31536000, immutable"
-
-# Form handling (if needed in the future)
-# [build.processing]
-#   skip_processing = false
-# [build.processing.css]
-#   bundle = true
-#   minify = true
-# [build.processing.js]
-#   bundle = true
-#   minify = true
-# [build.processing.html]
-#   pretty_urls = true
+# Compression and performance settings
+[build.processing]
+  skip_processing = false
+[build.processing.css]
+  bundle = true
+  minify = true
+[build.processing.js]
+  bundle = true
+  minify = true
+[build.processing.html]
+  pretty_urls = true
+[build.processing.images]
+  compress = true

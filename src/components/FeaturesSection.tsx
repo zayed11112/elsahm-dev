@@ -178,8 +178,8 @@ const FeaturesSection = () => {
         </div>
       </div>
 
-      {/* Custom CSS for feature cards */}
-      <style jsx global>{`
+      {/* Fixed the non-boolean attributes in the style tag */}
+      <style dangerouslySetInnerHTML={{__html: `
         .feature-card {
           transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
         }
@@ -194,7 +194,7 @@ const FeaturesSection = () => {
         .text-orange-500 { color: rgb(249, 115, 22); }
         .text-rose-500 { color: rgb(244, 63, 94); }
         .text-indigo-500 { color: rgb(99, 102, 241); }
-      `}</style>
+      `}} />
     </section>
   );
 };

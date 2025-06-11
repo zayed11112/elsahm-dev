@@ -4,6 +4,108 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
+    <!-- Load the blocking script first -->
+    <script src="/block-share-modal.js"></script>
+
+    <!-- Immediate fix for share-modal.js -->
+    <script>
+      (function() {
+        console.log('Initializing protective script');
+        
+        // Pre-define any expected global objects
+        window.shareModalInit = function() { console.log('Intercepted shareModalInit'); };
+        
+        // Create a mock interface for any problematic elements
+        window.__mockShareElement = {
+          addEventListener: function(event, callback) { 
+            console.log('Mock addEventListener called for event:', event);
+            // If it's a load event, call the callback immediately with a mock event
+            if (event === 'load') {
+              setTimeout(function() { 
+                callback({ type: 'load', target: window.__mockShareElement });
+              }, 10);
+            }
+          },
+          removeEventListener: function() {},
+          click: function() {},
+          style: { display: 'none' }
+        };
+        
+        // Patch document.querySelector to return mock objects for share buttons
+        const originalQuerySelector = document.querySelector;
+        document.querySelector = function(selector) {
+          if (selector && typeof selector === 'string' && 
+              (selector.includes('share') || selector.includes('sharing'))) {
+            console.log('Intercepted querySelector for:', selector);
+            return window.__mockShareElement;
+          }
+          return originalQuerySelector.call(document, selector);
+        };
+        
+        // Similarly patch document.getElementById
+        const originalGetElementById = document.getElementById;
+        document.getElementById = function(id) {
+          if (id && typeof id === 'string' && 
+              (id.includes('share') || id.includes('sharing'))) {
+            console.log('Intercepted getElementById for:', id);
+            return window.__mockShareElement;
+          }
+          return originalGetElementById.call(document, id);
+        };
+
+        // Block any external share-modal.js script
+        const observer = new MutationObserver(function(mutations) {
+          mutations.forEach(function(mutation) {
+            if (mutation.type === 'childList') {
+              mutation.addedNodes.forEach(function(node) {
+                if (node.nodeName === 'SCRIPT') {
+                  const scriptNode = node;
+                  if (scriptNode.src && scriptNode.src.includes('share-modal.js')) {
+                    console.log('Blocked external share-modal.js script:', scriptNode.src);
+                    scriptNode.parentNode.removeChild(scriptNode);
+                  }
+                }
+              });
+            }
+          });
+        });
+        
+        // Start observing
+        observer.observe(document, { childList: true, subtree: true });
+      })();
+    </script>
+
+    <!-- Critical CSS -->
+    <style>
+      /* Critical rendering path styles */
+      body, html {
+        margin: 0;
+        padding: 0;
+        height: 100%;
+      }
+      #root {
+        min-height: 100%;
+      }
+      /* Initial loading state */
+      .app-loading {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        background-color: #f9fafb;
+        color: #3B82F6;
+        font-family: sans-serif;
+      }
+    </style>
+
+    <!-- Resource hints -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="dns-prefetch" href="https://i.ibb.co" />
+    
+    <!-- Remove wildcards in preload URLs which don't work in development -->
+    <!-- Preload hints will be added at build time by Vite -->
+
     <!-- Primary Meta Tags -->
     <title>تطبيق السهم للتسكين الطلابي - منصة شاملة للإسكان الطلابي في مصر</title>
     <meta name="title" content="تطبيق السهم للتسكين الطلابي - منصة شاملة للإسكان الطلابي في مصر" />
@@ -13,6 +115,12 @@
     <meta name="robots" content="index, follow" />
     <meta name="language" content="Arabic" />
     <meta name="revisit-after" content="7 days" />
+
+    <!-- Performance optimizations -->
+    <meta http-equiv="x-dns-prefetch-control" content="on">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="format-detection" content="telephone=no" />
 
     <!-- Geo Tags -->
     <meta name="geo.region" content="EG" />
@@ -50,10 +158,6 @@
     <!-- Theme Color -->
     <meta name="theme-color" content="#3B82F6" />
     <meta name="msapplication-TileColor" content="#3B82F6" />
-
-    <!-- Preconnect to external domains -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 
     <!-- JSON-LD Structured Data -->
     <script type="application/ld+json">
@@ -103,7 +207,23 @@
   </head>
 
   <body>
-    <div id="root"></div>
+    <div id="root">
+      <!-- Fallback content while JavaScript loads -->
+      <div class="app-loading">
+        <div>جاري تحميل التطبيق...</div>
+      </div>
+    </div>
     <script type="module" src="/src/main.tsx"></script>
+    <!-- Inline script to remove loader once app renders -->
+    <script>
+      window.addEventListener('load', function() {
+        const loader = document.querySelector('.app-loading');
+        if (loader) {
+          setTimeout(() => {
+            loader.style.display = 'none';
+          }, 500);
+        }
+      });
+    </script>
   </body>
 </html>
